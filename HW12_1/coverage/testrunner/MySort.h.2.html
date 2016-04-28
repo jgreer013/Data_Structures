@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-24 07:55:15</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">122</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">100.0%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">122</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : #ifndef SORT_H </span>
+<span class="lineNum">    2</span>              : #define SORT_H </span>
+<span class="lineNum">    3</span>              : &#047;* </span>
+<span class="lineNum">    4</span>              :  * MySort.h </span>
+<span class="lineNum">    5</span>              :  * Name: Baker, Frazier N &amp; Greer, Jeremiah </span>
+<span class="lineNum">    6</span>              :  * </span>
+<span class="lineNum">    7</span>              :  * November 2015 </span>
+<span class="lineNum">    8</span>              :  *&#047; </span>
+<span class="lineNum">    9</span>              :  </span>
+<span class="lineNum">   10</span>              : #include &lt;vector&gt; </span>
+<span class="lineNum">   11</span>              : #include &lt;string.h&gt;  </span>
+<span class="lineNum">   12</span>              : #include &lt;iostream&gt; </span>
+<span class="lineNum">   13</span>              : #include &lt;algorithm&gt; </span>
+<span class="lineNum">   14</span>              : #include &quot;MaxHeap.h&quot; </span>
+<span class="lineNum">   15</span>              :  </span>
+<span class="lineNum">   16</span>              :  </span>
+<span class="lineNum">   17</span>              : using namespace std; </span>
+<span class="lineNum">   18</span>              :  </span>
+<span class="lineNum">   19</span><span class="lineCov">      1  /   1: void bubbleSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">   20</span><span class="lineCov">      1  /   1:   bool swapped = true; </span>
+<span class="lineNum">   21</span><span class="lineCov">      2  /   2:   while(swapped){ </span>
+<span class="lineNum">   22</span><span class="lineCov">      1  /   1:     swapped = false; </span>
+<span class="lineNum">   23</span><span class="lineCov">      2  /   2:     for(unsigned int i = 1; i &lt; data.size(); i++){ </span>
+<span class="lineNum">   24</span><span class="lineCov">      1  /   1:       if(data[i]&lt;data[i-1]){ </span>
+<span class="lineNum">   25</span><span class="lineCov">      1  /   1:         int tmp = data[i]; </span>
+<span class="lineNum">   26</span><span class="lineCov">      1  /   1:         data[i] = data[i-1]; </span>
+<span class="lineNum">   27</span><span class="lineCov">      1  /   1:         data[i-1] = tmp; </span>
+<span class="lineNum">   28</span><span class="lineCov">      1  /   1:         swapped = true; </span>
+<span class="lineNum">   29</span>              :       } </span>
+<span class="lineNum">   30</span>              :     } </span>
+<span class="lineNum">   31</span>              :   } </span>
+<span class="lineNum">   32</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   33</span>              :  </span>
+<span class="lineNum">   34</span><span class="lineCov">      1  /   1: vector&lt;int&gt; reMerge(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b){ </span>
+<span class="lineNum">   35</span><span class="lineCov">      1  /   1:   unsigned int s1 = a.size(); </span>
+<span class="lineNum">   36</span><span class="lineCov">      1  /   1:   unsigned int s2 = b.size(); </span>
+<span class="lineNum">   37</span><span class="lineCov">      1  /   1:   vector&lt;int&gt; fin; </span>
+<span class="lineNum">   38</span><span class="lineCov">      1  /   1:   unsigned int count1 = 0; </span>
+<span class="lineNum">   39</span><span class="lineCov">      1  /   1:   unsigned int count2 = 0; </span>
+<span class="lineNum">   40</span><span class="lineCov">      2  /   2:   while(fin.size() &lt; s1+s2){ </span>
+<span class="lineNum">   41</span><span class="lineCov">      1  /   1:     if(count1 &gt;= s1 &amp;&amp; count2 &gt;= s2){ </span>
+<span class="lineNum">   42</span>              :       break; </span>
+<span class="lineNum">   43</span><span class="lineCov">      1  /   1:     }else if(count1 &gt;= s1){ </span>
+<span class="lineNum">   44</span><span class="lineCov">      1  /   1:       fin.push_back(b[count2]); </span>
+<span class="lineNum">   45</span><span class="lineCov">      1  /   1:       count2++; </span>
+<span class="lineNum">   46</span><span class="lineCov">      1  /   1:     }else if(count2 &gt;= s2){ </span>
+<span class="lineNum">   47</span><span class="lineCov">      1  /   1:       fin.push_back(a[count1]); </span>
+<span class="lineNum">   48</span><span class="lineCov">      1  /   1:       count1++; </span>
+<span class="lineNum">   49</span>              :     }else{ </span>
+<span class="lineNum">   50</span><span class="lineCov">      1  /   1:       if(a[count1] &gt; b[count2]){ </span>
+<span class="lineNum">   51</span><span class="lineCov">      1  /   1:         fin.push_back(b[count2]); </span>
+<span class="lineNum">   52</span><span class="lineCov">      1  /   1:         count2++; </span>
+<span class="lineNum">   53</span>              :       }else{ </span>
+<span class="lineNum">   54</span><span class="lineCov">      1  /   1:         fin.push_back(a[count1]); </span>
+<span class="lineNum">   55</span><span class="lineCov">      1  /   1:         count1++; </span>
+<span class="lineNum">   56</span>              :       } </span>
+<span class="lineNum">   57</span>              :     } </span>
+<span class="lineNum">   58</span>              :   } </span>
+<span class="lineNum">   59</span><span class="lineCov">      1  /   1:   return fin; </span>
+<span class="lineNum">   60</span><span class="lineCov">      1  /   1: }; </span>
+<span class="lineNum">   61</span>              :  </span>
+<span class="lineNum">   62</span><span class="lineCov">      1  /   1: void mergeRec(vector&lt;int&gt;&amp; a){ </span>
+<span class="lineNum">   63</span><span class="lineCov">      1  /   1:   if(a.size() &lt;= 1){ </span>
+<span class="lineNum">   64</span><span class="lineCov">      1  /   1:     return; </span>
+<span class="lineNum">   65</span>              :   } </span>
+<span class="lineNum">   66</span><span class="lineCov">      1  /   1:   int mid = a.size()&#047;2; </span>
+<span class="lineNum">   67</span><span class="lineCov">      1  /   1:   vector&lt;int&gt; a2; </span>
+<span class="lineNum">   68</span><span class="lineCov">      1  /   1:   a2.insert(a2.end(), a.begin(), a.begin()+mid); </span>
+<span class="lineNum">   69</span><span class="linePartCov">      2  /   3:   vector&lt;int&gt; b; </span>
+<span class="lineNum">   70</span><span class="lineCov">      1  /   1:   b.insert(b.end(), a.begin()+mid, a.end()); </span>
+<span class="lineNum">   71</span><span class="lineCov">      1  /   1:   mergeRec(a2); </span>
+<span class="lineNum">   72</span><span class="lineCov">      1  /   1:   mergeRec(b); </span>
+<span class="lineNum">   73</span><span class="linePartCov">      2  /   3:   vector&lt;int&gt; fin; </span>
+<span class="lineNum">   74</span><span class="linePartCov">      1  /   2:   fin = reMerge(a2, b); </span>
+<span class="lineNum">   75</span><span class="lineCov">      1  /   1:   a = fin; </span>
+<span class="lineNum">   76</span><span class="linePartCov">      2  /   3:   return; </span>
+<span class="lineNum">   77</span><span class="lineCov">      1  /   1: }; </span>
+<span class="lineNum">   78</span>              :  </span>
+<span class="lineNum">   79</span>              : &#047;&#047; Quickly gets written compared to mergeSort </span>
+<span class="lineNum">   80</span><span class="lineCov">      1  /   1: void quickRec(vector&lt;int&gt;&amp; a){ </span>
+<span class="lineNum">   81</span><span class="lineCov">      1  /   1:   if(a.size() == 1 || a.size() == 0){ </span>
+<span class="lineNum">   82</span><span class="lineCov">      1  /   1:     return; </span>
+<span class="lineNum">   83</span>              :   } </span>
+<span class="lineNum">   84</span><span class="lineCov">      1  /   1:   int pivot = a.size()&#047;2; </span>
+<span class="lineNum">   85</span><span class="lineCov">      1  /   1:   vector&lt;int&gt; left; </span>
+<span class="lineNum">   86</span><span class="linePartCov">      2  /   3:   vector&lt;int&gt; right; </span>
+<span class="lineNum">   87</span><span class="linePartCov">      2  /   3:   vector&lt;int&gt; fin; </span>
+<span class="lineNum">   88</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; a.size(); i++){ </span>
+<span class="lineNum">   89</span><span class="lineCov">      1  /   1:     if(a[i] &lt; a[pivot]){ </span>
+<span class="lineNum">   90</span><span class="lineCov">      1  /   1:       left.push_back(a[i]); </span>
+<span class="lineNum">   91</span><span class="lineCov">      1  /   1:     }else if(a[i] &gt; a[pivot]){ </span>
+<span class="lineNum">   92</span><span class="lineCov">      1  /   1:       right.push_back(a[i]); </span>
+<span class="lineNum">   93</span>              :     }else{ </span>
+<span class="lineNum">   94</span><span class="lineCov">      1  /   1:       if(rand() % 2 == 0){ </span>
+<span class="lineNum">   95</span><span class="lineCov">      1  /   1:         left.push_back(a[i]); </span>
+<span class="lineNum">   96</span>              :       }else{ </span>
+<span class="lineNum">   97</span><span class="lineCov">      1  /   1:         right.push_back(a[i]); </span>
+<span class="lineNum">   98</span>              :       } </span>
+<span class="lineNum">   99</span>              :     } </span>
+<span class="lineNum">  100</span>              :   } </span>
+<span class="lineNum">  101</span><span class="lineCov">      1  /   1:   quickRec(left); </span>
+<span class="lineNum">  102</span><span class="lineCov">      1  /   1:   quickRec(right); </span>
+<span class="lineNum">  103</span><span class="lineCov">      1  /   1:   fin.insert(fin.end(), left.begin(), left.end()); </span>
+<span class="lineNum">  104</span><span class="lineCov">      1  /   1:   fin.insert(fin.end(), right.begin(), right.end()); </span>
+<span class="lineNum">  105</span><span class="lineCov">      1  /   1:   a = fin; </span>
+<span class="lineNum">  106</span><span class="linePartCov">      2  /   3:   return; </span>
+<span class="lineNum">  107</span><span class="lineCov">      1  /   1: }; </span>
+<span class="lineNum">  108</span>              :  </span>
+<span class="lineNum">  109</span>              : &#047;&#047;Calls recursive merge </span>
+<span class="lineNum">  110</span><span class="lineCov">      1  /   1: void mergeSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  111</span><span class="lineCov">      1  /   1:   mergeRec(data); </span>
+<span class="lineNum">  112</span><span class="lineCov">      1  /   1:   return; </span>
+<span class="lineNum">  113</span><span class="lineCov">      1  /   1: }; </span>
+<span class="lineNum">  114</span>              :  </span>
+<span class="lineNum">  115</span>              : &#047;&#047; Calls Recursive Quick </span>
+<span class="lineNum">  116</span><span class="lineCov">      1  /   1: void quickSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  117</span><span class="lineCov">      1  /   1:   quickRec(data); </span>
+<span class="lineNum">  118</span><span class="lineCov">      1  /   1:   return; </span>
+<span class="lineNum">  119</span><span class="lineCov">      1  /   1: }; </span>
+<span class="lineNum">  120</span>              :  </span>
+<span class="lineNum">  121</span>              : &#047;&#047; Selects the next smallest value and places it at the next location </span>
+<span class="lineNum">  122</span><span class="lineCov">      1  /   1: void selectionSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  123</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; data.size(); i++){ </span>
+<span class="lineNum">  124</span><span class="lineCov">      1  /   1:     int small_fry = i; </span>
+<span class="lineNum">  125</span><span class="lineCov">      2  /   2:     for(unsigned int j = i; j &lt; data.size(); j++){ </span>
+<span class="lineNum">  126</span><span class="lineCov">      1  /   1:       if(data[j] &lt; data[small_fry]){ </span>
+<span class="lineNum">  127</span><span class="lineCov">      1  /   1:         small_fry = j; </span>
+<span class="lineNum">  128</span>              :       } </span>
+<span class="lineNum">  129</span>              :     } </span>
+<span class="lineNum">  130</span><span class="lineCov">      1  /   1:     int temp = data[i]; </span>
+<span class="lineNum">  131</span><span class="lineCov">      1  /   1:     data[i] = data[small_fry]; </span>
+<span class="lineNum">  132</span><span class="lineCov">      1  /   1:     data[small_fry] = temp; </span>
+<span class="lineNum">  133</span>              :   } </span>
+<span class="lineNum">  134</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  135</span>              :  </span>
+<span class="lineNum">  136</span><span class="lineCov">      1  /   1: void mergeSort2(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  137</span>              :   &#047;&#047;adds optimization limit </span>
+<span class="lineNum">  138</span><span class="lineCov">      1  /   1:   const unsigned int LIMIT = 5; </span>
+<span class="lineNum">  139</span><span class="lineCov">      1  /   1:   if(data.size()&lt;LIMIT) { </span>
+<span class="lineNum">  140</span><span class="lineCov">      1  /   1:     bubbleSort(data); </span>
+<span class="lineNum">  141</span>              :   } </span>
+<span class="lineNum">  142</span>              :   else { </span>
+<span class="lineNum">  143</span><span class="lineCov">      1  /   1:     mergeSort(data); </span>
+<span class="lineNum">  144</span>              :   } </span>
+<span class="lineNum">  145</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  146</span>              :  </span>
+<span class="lineNum">  147</span><span class="lineCov">      1  /   1: void heapSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  148</span><span class="lineCov">      1  /   1:   MaxHeap&lt;int&gt; heap = MaxHeap&lt;int&gt;(); </span>
+<span class="lineNum">  149</span><span class="lineCov">      2  /   2:   for(unsigned int i=0;i &lt; data.size();i++){ </span>
+<span class="lineNum">  150</span><span class="lineCov">      1  /   1:     heap.push(data[i]); </span>
+<span class="lineNum">  151</span>              :   } </span>
+<span class="lineNum">  152</span><span class="lineCov">      2  /   2:   for(unsigned int i=0;i &lt; data.size();i++){ </span>
+<span class="lineNum">  153</span><span class="lineCov">      1  /   1:     data[i] = heap.top(); </span>
+<span class="lineNum">  154</span><span class="lineCov">      1  /   1:     heap.pop(); </span>
+<span class="lineNum">  155</span>              :   } </span>
+<span class="lineNum">  156</span><span class="lineCov">      1  /   1:   reverse(data.begin(),data.end()); </span>
+<span class="lineNum">  157</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  158</span>              :  </span>
+<span class="lineNum">  159</span><span class="lineCov">      1  /   1: void nonCompareSort(vector&lt;int&gt;&amp; data){ </span>
+<span class="lineNum">  160</span><span class="lineCov">      1  /   1:   if(data.size()&lt;=1) { </span>
+<span class="lineNum">  161</span><span class="lineCov">      1  /   1:     return; </span>
+<span class="lineNum">  162</span>              :   } </span>
+<span class="lineNum">  163</span>              :    </span>
+<span class="lineNum">  164</span><span class="lineCov">      1  /   1:   int max = data[0]; </span>
+<span class="lineNum">  165</span><span class="lineCov">      1  /   1:   int min = data[0]; </span>
+<span class="lineNum">  166</span><span class="lineCov">      2  /   2:   for(unsigned int i=0;i &lt; data.size();i++){ </span>
+<span class="lineNum">  167</span><span class="lineCov">      1  /   1:     if(data[i] &gt; max){ </span>
+<span class="lineNum">  168</span><span class="lineCov">      1  /   1:       max = data[i]; </span>
+<span class="lineNum">  169</span>              :     } </span>
+<span class="lineNum">  170</span><span class="lineCov">      1  /   1:     if(data[i] &lt; min){ </span>
+<span class="lineNum">  171</span><span class="lineCov">      1  /   1:       min = data[i]; </span>
+<span class="lineNum">  172</span>              :     } </span>
+<span class="lineNum">  173</span>              :   } </span>
+<span class="lineNum">  174</span><span class="lineCov">      1  /   1:   max++; </span>
+<span class="lineNum">  175</span><span class="lineCov">      1  /   1:   vector&lt;int&gt; counts = vector&lt;int&gt;(max); </span>
+<span class="lineNum">  176</span><span class="lineCov">      2  /   2:   for(unsigned int i=0;i &lt; data.size();i++){ </span>
+<span class="lineNum">  177</span><span class="lineCov">      1  /   1:     counts[data[i]]++; </span>
+<span class="lineNum">  178</span>              :   } </span>
+<span class="lineNum">  179</span><span class="linePartCov">      1  /   2:   vector&lt;int&gt; *retval = new vector&lt;int&gt;(0); </span>
+<span class="lineNum">  180</span><span class="lineCov">      2  /   2:   for(unsigned int i=0;i &lt; counts.size();i++){ </span>
+<span class="lineNum">  181</span><span class="lineCov">      2  /   2:     for(int j=0;j&lt;counts[i];j++){ </span>
+<span class="lineNum">  182</span><span class="lineCov">      1  /   1:       retval-&gt;push_back(i); </span>
+<span class="lineNum">  183</span>              :     } </span>
+<span class="lineNum">  184</span>              :   } </span>
+<span class="lineNum">  185</span><span class="linePartCov">      1  /   2:   data = *retval; </span>
+<span class="lineNum">  186</span>              :   &#047;&#047;retval = NULL; </span>
+<span class="lineNum">  187</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  188</span>              :  </span>
+<span class="lineNum">  189</span>              :  </span>
+<span class="lineNum">  190</span>              : #endif </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

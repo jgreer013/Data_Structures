@@ -1,0 +1,527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-24 07:55:15</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">301</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">100.0%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">301</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* Generated file, do not edit *&#047; </span>
+<span class="lineNum">    2</span>              :  </span>
+<span class="lineNum">    3</span>              : #ifndef CXXTEST_RUNNING </span>
+<span class="lineNum">    4</span>              : #define CXXTEST_RUNNING </span>
+<span class="lineNum">    5</span>              : #endif </span>
+<span class="lineNum">    6</span>              :  </span>
+<span class="lineNum">    7</span>              : #define _CXXTEST_HAVE_STD </span>
+<span class="lineNum">    8</span>              : #define _CXXTEST_HAVE_EH </span>
+<span class="lineNum">    9</span>              : #include &lt;cxxtest&#047;TestListener.h&gt; </span>
+<span class="lineNum">   10</span>              : #include &lt;cxxtest&#047;TestTracker.h&gt; </span>
+<span class="lineNum">   11</span>              : #include &lt;cxxtest&#047;TestRunner.h&gt; </span>
+<span class="lineNum">   12</span>              : #include &lt;cxxtest&#047;RealDescriptions.h&gt; </span>
+<span class="lineNum">   13</span>              : #include &lt;cxxtest&#047;TestMain.h&gt; </span>
+<span class="lineNum">   14</span>              : #include &lt;cxxtest&#047;ErrorPrinter.h&gt; </span>
+<span class="lineNum">   15</span>              :  </span>
+<span class="lineNum">   16</span><span class="lineCov">      1  /   1: int main( int argc, char *argv[] ) { </span>
+<span class="lineNum">   17</span>              :  int status; </span>
+<span class="lineNum">   18</span><span class="lineCov">      1  /   1:     CxxTest::ErrorPrinter tmp; </span>
+<span class="lineNum">   19</span><span class="lineCov">      1  /   1:     CxxTest::RealWorldDescription::_worldName = &quot;cxxtest&quot;; </span>
+<span class="lineNum">   20</span><span class="lineCov">      1  /   1:     status = CxxTest::Main&lt; CxxTest::ErrorPrinter &gt;( tmp, argc, argv ); </span>
+<span class="lineNum">   21</span><span class="lineCov">      1  /   1:     return status; </span>
+<span class="lineNum">   22</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   23</span>              : bool suite_BubbleTest_init = false; </span>
+<span class="lineNum">   24</span>              : #include &quot;MySort_test.h&quot; </span>
+<span class="lineNum">   25</span>              :  </span>
+<span class="lineNum">   26</span><span class="lineCov">      1  /   1: static BubbleTest suite_BubbleTest; </span>
+<span class="lineNum">   27</span>              :  </span>
+<span class="lineNum">   28</span>              : static CxxTest::List Tests_BubbleTest = { 0, 0 }; </span>
+<span class="lineNum">   29</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_BubbleTest( &quot;MySort_test.h&quot;, 26, &quot;BubbleTest&quot;, suite_BubbleTest, Tests_BubbleTest ); </span>
+<span class="lineNum">   30</span>              :  </span>
+<span class="lineNum">   31</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   32</span>              : public: </span>
+<span class="lineNum">   33</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 34, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">   34</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testisSortedEmpty(); } </span>
+<span class="lineNum">   35</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testisSortedEmpty; </span>
+<span class="lineNum">   36</span>              :  </span>
+<span class="lineNum">   37</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   38</span>              : public: </span>
+<span class="lineNum">   39</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 41, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">   40</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testSortRepeats(); } </span>
+<span class="lineNum">   41</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testSortRepeats; </span>
+<span class="lineNum">   42</span>              :  </span>
+<span class="lineNum">   43</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   44</span>              : public: </span>
+<span class="lineNum">   45</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 66, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">   46</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testSortInOrder(); } </span>
+<span class="lineNum">   47</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testSortInOrder; </span>
+<span class="lineNum">   48</span>              :  </span>
+<span class="lineNum">   49</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   50</span>              : public: </span>
+<span class="lineNum">   51</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 78, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">   52</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testSortRandSize(); } </span>
+<span class="lineNum">   53</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testSortRandSize; </span>
+<span class="lineNum">   54</span>              :  </span>
+<span class="lineNum">   55</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   56</span>              : public: </span>
+<span class="lineNum">   57</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testSortNegatives() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 88, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">   58</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testSortNegatives(); } </span>
+<span class="lineNum">   59</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testSortNegatives; </span>
+<span class="lineNum">   60</span>              :  </span>
+<span class="lineNum">   61</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   62</span>              : public: </span>
+<span class="lineNum">   63</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testAllSame() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 99, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">   64</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testAllSame(); } </span>
+<span class="lineNum">   65</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testAllSame; </span>
+<span class="lineNum">   66</span>              :  </span>
+<span class="lineNum">   67</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   68</span>              : public: </span>
+<span class="lineNum">   69</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testAlternating() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 111, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">   70</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testAlternating(); } </span>
+<span class="lineNum">   71</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testAlternating; </span>
+<span class="lineNum">   72</span>              :  </span>
+<span class="lineNum">   73</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   74</span>              : public: </span>
+<span class="lineNum">   75</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 122, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">   76</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testReverseOrder(); } </span>
+<span class="lineNum">   77</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testReverseOrder; </span>
+<span class="lineNum">   78</span>              :  </span>
+<span class="lineNum">   79</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   80</span>              : public: </span>
+<span class="lineNum">   81</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testOne() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 134, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">   82</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testOne(); } </span>
+<span class="lineNum">   83</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testOne; </span>
+<span class="lineNum">   84</span>              :  </span>
+<span class="lineNum">   85</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_BubbleTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   86</span>              : public: </span>
+<span class="lineNum">   87</span><span class="linePartCov">      2  /   3:  TestDescription_suite_BubbleTest_testTwo() : CxxTest::RealTestDescription( Tests_BubbleTest, suiteDescription_BubbleTest, 144, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">   88</span><span class="linePartCov">      2  /   3:  void runTest() { suite_BubbleTest.testTwo(); } </span>
+<span class="lineNum">   89</span><span class="lineCov">      1  /   1: } testDescription_suite_BubbleTest_testTwo; </span>
+<span class="lineNum">   90</span>              :  </span>
+<span class="lineNum">   91</span><span class="lineCov">      1  /   1: static HeapTest suite_HeapTest; </span>
+<span class="lineNum">   92</span>              :  </span>
+<span class="lineNum">   93</span>              : static CxxTest::List Tests_HeapTest = { 0, 0 }; </span>
+<span class="lineNum">   94</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_HeapTest( &quot;MySort_test.h&quot;, 157, &quot;HeapTest&quot;, suite_HeapTest, Tests_HeapTest ); </span>
+<span class="lineNum">   95</span>              :  </span>
+<span class="lineNum">   96</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">   97</span>              : public: </span>
+<span class="lineNum">   98</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 165, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">   99</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testisSortedEmpty(); } </span>
+<span class="lineNum">  100</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testisSortedEmpty; </span>
+<span class="lineNum">  101</span>              :  </span>
+<span class="lineNum">  102</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  103</span>              : public: </span>
+<span class="lineNum">  104</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 172, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  105</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testSortRepeats(); } </span>
+<span class="lineNum">  106</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testSortRepeats; </span>
+<span class="lineNum">  107</span>              :  </span>
+<span class="lineNum">  108</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  109</span>              : public: </span>
+<span class="lineNum">  110</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 197, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  111</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testSortInOrder(); } </span>
+<span class="lineNum">  112</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testSortInOrder; </span>
+<span class="lineNum">  113</span>              :  </span>
+<span class="lineNum">  114</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  115</span>              : public: </span>
+<span class="lineNum">  116</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 209, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  117</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testSortRandSize(); } </span>
+<span class="lineNum">  118</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testSortRandSize; </span>
+<span class="lineNum">  119</span>              :  </span>
+<span class="lineNum">  120</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  121</span>              : public: </span>
+<span class="lineNum">  122</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testSortNegatives() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 219, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">  123</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testSortNegatives(); } </span>
+<span class="lineNum">  124</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testSortNegatives; </span>
+<span class="lineNum">  125</span>              :  </span>
+<span class="lineNum">  126</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  127</span>              : public: </span>
+<span class="lineNum">  128</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testAllSame() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 230, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  129</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testAllSame(); } </span>
+<span class="lineNum">  130</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testAllSame; </span>
+<span class="lineNum">  131</span>              :  </span>
+<span class="lineNum">  132</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  133</span>              : public: </span>
+<span class="lineNum">  134</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testAlternating() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 242, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  135</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testAlternating(); } </span>
+<span class="lineNum">  136</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testAlternating; </span>
+<span class="lineNum">  137</span>              :  </span>
+<span class="lineNum">  138</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  139</span>              : public: </span>
+<span class="lineNum">  140</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 253, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  141</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testReverseOrder(); } </span>
+<span class="lineNum">  142</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testReverseOrder; </span>
+<span class="lineNum">  143</span>              :  </span>
+<span class="lineNum">  144</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  145</span>              : public: </span>
+<span class="lineNum">  146</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testOne() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 265, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  147</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testOne(); } </span>
+<span class="lineNum">  148</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testOne; </span>
+<span class="lineNum">  149</span>              :  </span>
+<span class="lineNum">  150</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_HeapTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  151</span>              : public: </span>
+<span class="lineNum">  152</span><span class="linePartCov">      2  /   3:  TestDescription_suite_HeapTest_testTwo() : CxxTest::RealTestDescription( Tests_HeapTest, suiteDescription_HeapTest, 275, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  153</span><span class="linePartCov">      2  /   3:  void runTest() { suite_HeapTest.testTwo(); } </span>
+<span class="lineNum">  154</span><span class="lineCov">      1  /   1: } testDescription_suite_HeapTest_testTwo; </span>
+<span class="lineNum">  155</span>              :  </span>
+<span class="lineNum">  156</span><span class="lineCov">      1  /   1: static MergeTest suite_MergeTest; </span>
+<span class="lineNum">  157</span>              :  </span>
+<span class="lineNum">  158</span>              : static CxxTest::List Tests_MergeTest = { 0, 0 }; </span>
+<span class="lineNum">  159</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_MergeTest( &quot;MySort_test.h&quot;, 288, &quot;MergeTest&quot;, suite_MergeTest, Tests_MergeTest ); </span>
+<span class="lineNum">  160</span>              :  </span>
+<span class="lineNum">  161</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  162</span>              : public: </span>
+<span class="lineNum">  163</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 296, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">  164</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testisSortedEmpty(); } </span>
+<span class="lineNum">  165</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testisSortedEmpty; </span>
+<span class="lineNum">  166</span>              :  </span>
+<span class="lineNum">  167</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  168</span>              : public: </span>
+<span class="lineNum">  169</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 303, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  170</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testSortRepeats(); } </span>
+<span class="lineNum">  171</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testSortRepeats; </span>
+<span class="lineNum">  172</span>              :  </span>
+<span class="lineNum">  173</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  174</span>              : public: </span>
+<span class="lineNum">  175</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 328, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  176</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testSortInOrder(); } </span>
+<span class="lineNum">  177</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testSortInOrder; </span>
+<span class="lineNum">  178</span>              :  </span>
+<span class="lineNum">  179</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  180</span>              : public: </span>
+<span class="lineNum">  181</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 340, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  182</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testSortRandSize(); } </span>
+<span class="lineNum">  183</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testSortRandSize; </span>
+<span class="lineNum">  184</span>              :  </span>
+<span class="lineNum">  185</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  186</span>              : public: </span>
+<span class="lineNum">  187</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testSortNegatives() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 350, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">  188</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testSortNegatives(); } </span>
+<span class="lineNum">  189</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testSortNegatives; </span>
+<span class="lineNum">  190</span>              :  </span>
+<span class="lineNum">  191</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  192</span>              : public: </span>
+<span class="lineNum">  193</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testAllSame() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 361, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  194</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testAllSame(); } </span>
+<span class="lineNum">  195</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testAllSame; </span>
+<span class="lineNum">  196</span>              :  </span>
+<span class="lineNum">  197</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  198</span>              : public: </span>
+<span class="lineNum">  199</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testAlternating() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 373, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  200</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testAlternating(); } </span>
+<span class="lineNum">  201</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testAlternating; </span>
+<span class="lineNum">  202</span>              :  </span>
+<span class="lineNum">  203</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  204</span>              : public: </span>
+<span class="lineNum">  205</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 384, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  206</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testReverseOrder(); } </span>
+<span class="lineNum">  207</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testReverseOrder; </span>
+<span class="lineNum">  208</span>              :  </span>
+<span class="lineNum">  209</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  210</span>              : public: </span>
+<span class="lineNum">  211</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testOne() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 396, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  212</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testOne(); } </span>
+<span class="lineNum">  213</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testOne; </span>
+<span class="lineNum">  214</span>              :  </span>
+<span class="lineNum">  215</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_MergeTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  216</span>              : public: </span>
+<span class="lineNum">  217</span><span class="linePartCov">      2  /   3:  TestDescription_suite_MergeTest_testTwo() : CxxTest::RealTestDescription( Tests_MergeTest, suiteDescription_MergeTest, 406, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  218</span><span class="linePartCov">      2  /   3:  void runTest() { suite_MergeTest.testTwo(); } </span>
+<span class="lineNum">  219</span><span class="lineCov">      1  /   1: } testDescription_suite_MergeTest_testTwo; </span>
+<span class="lineNum">  220</span>              :  </span>
+<span class="lineNum">  221</span><span class="lineCov">      1  /   1: static Merge2Test suite_Merge2Test; </span>
+<span class="lineNum">  222</span>              :  </span>
+<span class="lineNum">  223</span>              : static CxxTest::List Tests_Merge2Test = { 0, 0 }; </span>
+<span class="lineNum">  224</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_Merge2Test( &quot;MySort_test.h&quot;, 419, &quot;Merge2Test&quot;, suite_Merge2Test, Tests_Merge2Test ); </span>
+<span class="lineNum">  225</span>              :  </span>
+<span class="lineNum">  226</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  227</span>              : public: </span>
+<span class="lineNum">  228</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 427, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">  229</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testisSortedEmpty(); } </span>
+<span class="lineNum">  230</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testisSortedEmpty; </span>
+<span class="lineNum">  231</span>              :  </span>
+<span class="lineNum">  232</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  233</span>              : public: </span>
+<span class="lineNum">  234</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testSortRepeats() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 434, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  235</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testSortRepeats(); } </span>
+<span class="lineNum">  236</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testSortRepeats; </span>
+<span class="lineNum">  237</span>              :  </span>
+<span class="lineNum">  238</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  239</span>              : public: </span>
+<span class="lineNum">  240</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testSortInOrder() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 459, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  241</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testSortInOrder(); } </span>
+<span class="lineNum">  242</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testSortInOrder; </span>
+<span class="lineNum">  243</span>              :  </span>
+<span class="lineNum">  244</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  245</span>              : public: </span>
+<span class="lineNum">  246</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testSortRandSize() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 471, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  247</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testSortRandSize(); } </span>
+<span class="lineNum">  248</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testSortRandSize; </span>
+<span class="lineNum">  249</span>              :  </span>
+<span class="lineNum">  250</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  251</span>              : public: </span>
+<span class="lineNum">  252</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testSortNegatives() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 481, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">  253</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testSortNegatives(); } </span>
+<span class="lineNum">  254</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testSortNegatives; </span>
+<span class="lineNum">  255</span>              :  </span>
+<span class="lineNum">  256</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  257</span>              : public: </span>
+<span class="lineNum">  258</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testAllSame() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 492, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  259</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testAllSame(); } </span>
+<span class="lineNum">  260</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testAllSame; </span>
+<span class="lineNum">  261</span>              :  </span>
+<span class="lineNum">  262</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  263</span>              : public: </span>
+<span class="lineNum">  264</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testAlternating() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 504, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  265</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testAlternating(); } </span>
+<span class="lineNum">  266</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testAlternating; </span>
+<span class="lineNum">  267</span>              :  </span>
+<span class="lineNum">  268</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  269</span>              : public: </span>
+<span class="lineNum">  270</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testReverseOrder() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 515, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  271</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testReverseOrder(); } </span>
+<span class="lineNum">  272</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testReverseOrder; </span>
+<span class="lineNum">  273</span>              :  </span>
+<span class="lineNum">  274</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  275</span>              : public: </span>
+<span class="lineNum">  276</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testOne() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 527, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  277</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testOne(); } </span>
+<span class="lineNum">  278</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testOne; </span>
+<span class="lineNum">  279</span>              :  </span>
+<span class="lineNum">  280</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_Merge2Test_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  281</span>              : public: </span>
+<span class="lineNum">  282</span><span class="linePartCov">      2  /   3:  TestDescription_suite_Merge2Test_testTwo() : CxxTest::RealTestDescription( Tests_Merge2Test, suiteDescription_Merge2Test, 537, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  283</span><span class="linePartCov">      2  /   3:  void runTest() { suite_Merge2Test.testTwo(); } </span>
+<span class="lineNum">  284</span><span class="lineCov">      1  /   1: } testDescription_suite_Merge2Test_testTwo; </span>
+<span class="lineNum">  285</span>              :  </span>
+<span class="lineNum">  286</span><span class="lineCov">      1  /   1: static NonCompTest suite_NonCompTest; </span>
+<span class="lineNum">  287</span>              :  </span>
+<span class="lineNum">  288</span>              : static CxxTest::List Tests_NonCompTest = { 0, 0 }; </span>
+<span class="lineNum">  289</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_NonCompTest( &quot;MySort_test.h&quot;, 550, &quot;NonCompTest&quot;, suite_NonCompTest, Tests_NonCompTest ); </span>
+<span class="lineNum">  290</span>              :  </span>
+<span class="lineNum">  291</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  292</span>              : public: </span>
+<span class="lineNum">  293</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 558, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">  294</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testisSortedEmpty(); } </span>
+<span class="lineNum">  295</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testisSortedEmpty; </span>
+<span class="lineNum">  296</span>              :  </span>
+<span class="lineNum">  297</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  298</span>              : public: </span>
+<span class="lineNum">  299</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 565, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  300</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testSortRepeats(); } </span>
+<span class="lineNum">  301</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testSortRepeats; </span>
+<span class="lineNum">  302</span>              :  </span>
+<span class="lineNum">  303</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  304</span>              : public: </span>
+<span class="lineNum">  305</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 590, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  306</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testSortInOrder(); } </span>
+<span class="lineNum">  307</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testSortInOrder; </span>
+<span class="lineNum">  308</span>              :  </span>
+<span class="lineNum">  309</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  310</span>              : public: </span>
+<span class="lineNum">  311</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 602, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  312</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testSortRandSize(); } </span>
+<span class="lineNum">  313</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testSortRandSize; </span>
+<span class="lineNum">  314</span>              :  </span>
+<span class="lineNum">  315</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testZeroes : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  316</span>              : public: </span>
+<span class="lineNum">  317</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testZeroes() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 612, &quot;testZeroes&quot; ) {} </span>
+<span class="lineNum">  318</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testZeroes(); } </span>
+<span class="lineNum">  319</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testZeroes; </span>
+<span class="lineNum">  320</span>              :  </span>
+<span class="lineNum">  321</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  322</span>              : public: </span>
+<span class="lineNum">  323</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testAllSame() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 623, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  324</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testAllSame(); } </span>
+<span class="lineNum">  325</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testAllSame; </span>
+<span class="lineNum">  326</span>              :  </span>
+<span class="lineNum">  327</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  328</span>              : public: </span>
+<span class="lineNum">  329</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testAlternating() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 635, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  330</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testAlternating(); } </span>
+<span class="lineNum">  331</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testAlternating; </span>
+<span class="lineNum">  332</span>              :  </span>
+<span class="lineNum">  333</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  334</span>              : public: </span>
+<span class="lineNum">  335</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 646, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  336</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testReverseOrder(); } </span>
+<span class="lineNum">  337</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testReverseOrder; </span>
+<span class="lineNum">  338</span>              :  </span>
+<span class="lineNum">  339</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  340</span>              : public: </span>
+<span class="lineNum">  341</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testOne() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 658, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  342</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testOne(); } </span>
+<span class="lineNum">  343</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testOne; </span>
+<span class="lineNum">  344</span>              :  </span>
+<span class="lineNum">  345</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_NonCompTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  346</span>              : public: </span>
+<span class="lineNum">  347</span><span class="linePartCov">      2  /   3:  TestDescription_suite_NonCompTest_testTwo() : CxxTest::RealTestDescription( Tests_NonCompTest, suiteDescription_NonCompTest, 668, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  348</span><span class="linePartCov">      2  /   3:  void runTest() { suite_NonCompTest.testTwo(); } </span>
+<span class="lineNum">  349</span><span class="lineCov">      1  /   1: } testDescription_suite_NonCompTest_testTwo; </span>
+<span class="lineNum">  350</span>              :  </span>
+<span class="lineNum">  351</span><span class="lineCov">      1  /   1: static QuickTest suite_QuickTest; </span>
+<span class="lineNum">  352</span>              :  </span>
+<span class="lineNum">  353</span>              : static CxxTest::List Tests_QuickTest = { 0, 0 }; </span>
+<span class="lineNum">  354</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_QuickTest( &quot;MySort_test.h&quot;, 679, &quot;QuickTest&quot;, suite_QuickTest, Tests_QuickTest ); </span>
+<span class="lineNum">  355</span>              :  </span>
+<span class="lineNum">  356</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  357</span>              : public: </span>
+<span class="lineNum">  358</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 687, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">  359</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testisSortedEmpty(); } </span>
+<span class="lineNum">  360</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testisSortedEmpty; </span>
+<span class="lineNum">  361</span>              :  </span>
+<span class="lineNum">  362</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  363</span>              : public: </span>
+<span class="lineNum">  364</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 694, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  365</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testSortRepeats(); } </span>
+<span class="lineNum">  366</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testSortRepeats; </span>
+<span class="lineNum">  367</span>              :  </span>
+<span class="lineNum">  368</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  369</span>              : public: </span>
+<span class="lineNum">  370</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 719, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  371</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testSortInOrder(); } </span>
+<span class="lineNum">  372</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testSortInOrder; </span>
+<span class="lineNum">  373</span>              :  </span>
+<span class="lineNum">  374</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  375</span>              : public: </span>
+<span class="lineNum">  376</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 731, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  377</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testSortRandSize(); } </span>
+<span class="lineNum">  378</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testSortRandSize; </span>
+<span class="lineNum">  379</span>              :  </span>
+<span class="lineNum">  380</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  381</span>              : public: </span>
+<span class="lineNum">  382</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testSortNegatives() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 741, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">  383</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testSortNegatives(); } </span>
+<span class="lineNum">  384</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testSortNegatives; </span>
+<span class="lineNum">  385</span>              :  </span>
+<span class="lineNum">  386</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  387</span>              : public: </span>
+<span class="lineNum">  388</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testAllSame() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 752, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  389</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testAllSame(); } </span>
+<span class="lineNum">  390</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testAllSame; </span>
+<span class="lineNum">  391</span>              :  </span>
+<span class="lineNum">  392</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  393</span>              : public: </span>
+<span class="lineNum">  394</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testAlternating() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 764, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  395</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testAlternating(); } </span>
+<span class="lineNum">  396</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testAlternating; </span>
+<span class="lineNum">  397</span>              :  </span>
+<span class="lineNum">  398</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  399</span>              : public: </span>
+<span class="lineNum">  400</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 775, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  401</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testReverseOrder(); } </span>
+<span class="lineNum">  402</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testReverseOrder; </span>
+<span class="lineNum">  403</span>              :  </span>
+<span class="lineNum">  404</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  405</span>              : public: </span>
+<span class="lineNum">  406</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testOne() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 787, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  407</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testOne(); } </span>
+<span class="lineNum">  408</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testOne; </span>
+<span class="lineNum">  409</span>              :  </span>
+<span class="lineNum">  410</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_QuickTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  411</span>              : public: </span>
+<span class="lineNum">  412</span><span class="linePartCov">      2  /   3:  TestDescription_suite_QuickTest_testTwo() : CxxTest::RealTestDescription( Tests_QuickTest, suiteDescription_QuickTest, 797, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  413</span><span class="linePartCov">      2  /   3:  void runTest() { suite_QuickTest.testTwo(); } </span>
+<span class="lineNum">  414</span><span class="lineCov">      1  /   1: } testDescription_suite_QuickTest_testTwo; </span>
+<span class="lineNum">  415</span>              :  </span>
+<span class="lineNum">  416</span><span class="lineCov">      1  /   1: static SelectionTest suite_SelectionTest; </span>
+<span class="lineNum">  417</span>              :  </span>
+<span class="lineNum">  418</span>              : static CxxTest::List Tests_SelectionTest = { 0, 0 }; </span>
+<span class="lineNum">  419</span><span class="lineCov">      1  /   1: CxxTest::StaticSuiteDescription suiteDescription_SelectionTest( &quot;MySort_test.h&quot;, 810, &quot;SelectionTest&quot;, suite_SelectionTest, Tests_SelectionTest ); </span>
+<span class="lineNum">  420</span>              :  </span>
+<span class="lineNum">  421</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testisSortedEmpty : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  422</span>              : public: </span>
+<span class="lineNum">  423</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testisSortedEmpty() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 818, &quot;testisSortedEmpty&quot; ) {} </span>
+<span class="lineNum">  424</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testisSortedEmpty(); } </span>
+<span class="lineNum">  425</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testisSortedEmpty; </span>
+<span class="lineNum">  426</span>              :  </span>
+<span class="lineNum">  427</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testSortRepeats : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  428</span>              : public: </span>
+<span class="lineNum">  429</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testSortRepeats() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 825, &quot;testSortRepeats&quot; ) {} </span>
+<span class="lineNum">  430</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testSortRepeats(); } </span>
+<span class="lineNum">  431</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testSortRepeats; </span>
+<span class="lineNum">  432</span>              :  </span>
+<span class="lineNum">  433</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testSortInOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  434</span>              : public: </span>
+<span class="lineNum">  435</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testSortInOrder() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 850, &quot;testSortInOrder&quot; ) {} </span>
+<span class="lineNum">  436</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testSortInOrder(); } </span>
+<span class="lineNum">  437</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testSortInOrder; </span>
+<span class="lineNum">  438</span>              :  </span>
+<span class="lineNum">  439</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testSortRandSize : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  440</span>              : public: </span>
+<span class="lineNum">  441</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testSortRandSize() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 862, &quot;testSortRandSize&quot; ) {} </span>
+<span class="lineNum">  442</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testSortRandSize(); } </span>
+<span class="lineNum">  443</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testSortRandSize; </span>
+<span class="lineNum">  444</span>              :  </span>
+<span class="lineNum">  445</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testSortNegatives : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  446</span>              : public: </span>
+<span class="lineNum">  447</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testSortNegatives() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 872, &quot;testSortNegatives&quot; ) {} </span>
+<span class="lineNum">  448</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testSortNegatives(); } </span>
+<span class="lineNum">  449</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testSortNegatives; </span>
+<span class="lineNum">  450</span>              :  </span>
+<span class="lineNum">  451</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testAllSame : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  452</span>              : public: </span>
+<span class="lineNum">  453</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testAllSame() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 883, &quot;testAllSame&quot; ) {} </span>
+<span class="lineNum">  454</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testAllSame(); } </span>
+<span class="lineNum">  455</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testAllSame; </span>
+<span class="lineNum">  456</span>              :  </span>
+<span class="lineNum">  457</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testAlternating : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  458</span>              : public: </span>
+<span class="lineNum">  459</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testAlternating() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 895, &quot;testAlternating&quot; ) {} </span>
+<span class="lineNum">  460</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testAlternating(); } </span>
+<span class="lineNum">  461</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testAlternating; </span>
+<span class="lineNum">  462</span>              :  </span>
+<span class="lineNum">  463</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testReverseOrder : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  464</span>              : public: </span>
+<span class="lineNum">  465</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testReverseOrder() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 906, &quot;testReverseOrder&quot; ) {} </span>
+<span class="lineNum">  466</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testReverseOrder(); } </span>
+<span class="lineNum">  467</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testReverseOrder; </span>
+<span class="lineNum">  468</span>              :  </span>
+<span class="lineNum">  469</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testOne : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  470</span>              : public: </span>
+<span class="lineNum">  471</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testOne() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 918, &quot;testOne&quot; ) {} </span>
+<span class="lineNum">  472</span><span class="linePartCov">      2  /   3:  void runTest() { suite_SelectionTest.testOne(); } </span>
+<span class="lineNum">  473</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testOne; </span>
+<span class="lineNum">  474</span>              :  </span>
+<span class="lineNum">  475</span><span class="linePartCov">      2  /   5: static class TestDescription_suite_SelectionTest_testTwo : public CxxTest::RealTestDescription { </span>
+<span class="lineNum">  476</span>              : public: </span>
+<span class="lineNum">  477</span><span class="linePartCov">      2  /   3:  TestDescription_suite_SelectionTest_testTwo() : CxxTest::RealTestDescription( Tests_SelectionTest, suiteDescription_SelectionTest, 928, &quot;testTwo&quot; ) {} </span>
+<span class="lineNum">  478</span><span class="lineCov">      3  /   3:  void runTest() { suite_SelectionTest.testTwo(); } </span>
+<span class="lineNum">  479</span><span class="lineCov">      1  /   1: } testDescription_suite_SelectionTest_testTwo; </span>
+<span class="lineNum">  480</span>              :  </span>
+<span class="lineNum">  481</span>              : #include &lt;cxxtest&#047;Root.cpp&gt; </span>
+<span class="lineNum">  482</span><span class="linePartCov">      5  /   6: const char* CxxTest::RealWorldDescription::_worldName = &quot;cxxtest&quot;; </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

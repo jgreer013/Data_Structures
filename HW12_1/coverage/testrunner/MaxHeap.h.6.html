@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-24 07:55:15</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">52</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">94.2%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">49</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : #ifndef MAXHEAP_H </span>
+<span class="lineNum">    2</span>              : #define MAXHEAP_H  </span>
+<span class="lineNum">    3</span>              : &#047;*    file MaxHeap.h     </span>
+<span class="lineNum">    4</span>              :       author Frazier Baker </span>
+<span class="lineNum">    5</span>              :       date November 2015 </span>
+<span class="lineNum">    6</span>              :  </span>
+<span class="lineNum">    7</span>              :       @description Implements a templated maximum queue, using a </span>
+<span class="lineNum">    8</span>              :       heap structure. </span>
+<span class="lineNum">    9</span>              : *&#047; </span>
+<span class="lineNum">   10</span>              : #include &lt;vector&gt; </span>
+<span class="lineNum">   11</span>              : #include &lt;iostream&gt; </span>
+<span class="lineNum">   12</span>              : #include &lt;stdexcept&gt; </span>
+<span class="lineNum">   13</span>              :  </span>
+<span class="lineNum">   14</span>              : using namespace std; </span>
+<span class="lineNum">   15</span>              :  </span>
+<span class="lineNum">   16</span>              : template &lt;class T&gt;  </span>
+<span class="lineNum">   17</span><span class="linePartCov">      2  /   3: class MaxHeap { </span>
+<span class="lineNum">   18</span>              : friend class MaxHeapTest; </span>
+<span class="lineNum">   19</span>              : public:  </span>
+<span class="lineNum">   20</span>              :  </span>
+<span class="lineNum">   21</span><span class="linePartCov">      2  /   3: MaxHeap(){  </span>
+<span class="lineNum">   22</span><span class="lineCov">      1  /   1:   vector&lt;T&gt; stuff = vector&lt;T&gt;(0); &#047;&#047;initialize stuff vector </span>
+<span class="lineNum">   23</span><span class="linePartCov">      2  /   3: } </span>
+<span class="lineNum">   24</span>              :  </span>
+<span class="lineNum">   25</span><span class="lineCov">      1  /   1: void push(T value){ </span>
+<span class="lineNum">   26</span>              :   &#047;&#047; adds to max heap </span>
+<span class="lineNum">   27</span><span class="lineCov">      1  /   1:   stuff.push_back(value); </span>
+<span class="lineNum">   28</span><span class="lineCov">      1  /   1:   int parent = stuff.size()-1; </span>
+<span class="lineNum">   29</span><span class="lineCov">      2  /   2:   while(parent){ </span>
+<span class="lineNum">   30</span><span class="lineCov">      1  /   1:     int me = parent; </span>
+<span class="lineNum">   31</span><span class="lineCov">      1  /   1:     parent = indexParent(me); </span>
+<span class="lineNum">   32</span><span class="lineCov">      1  /   1:     if(stuff[me] &gt; stuff[parent]){ &#047;&#047;swap </span>
+<span class="lineNum">   33</span><span class="lineCov">      1  /   1:       T tmp = stuff[parent]; </span>
+<span class="lineNum">   34</span><span class="lineCov">      1  /   1:       stuff[parent] = stuff[me]; </span>
+<span class="lineNum">   35</span><span class="lineCov">      1  /   1:       stuff[me] = tmp; </span>
+<span class="lineNum">   36</span>              :     } </span>
+<span class="lineNum">   37</span>              :   } </span>
+<span class="lineNum">   38</span><span class="linePartCov">      1  /   2: } </span>
+<span class="lineNum">   39</span>              :  </span>
+<span class="lineNum">   40</span><span class="lineCov">      1  /   1: void pop(){ </span>
+<span class="lineNum">   41</span>              :   &#047;&#047; removes the top element from max heap </span>
+<span class="lineNum">   42</span><span class="lineCov">      1  /   1:   if(!size()){ </span>
+<span class="lineNum">   43</span><span class="lineNoCov">      0  /   1:     return; </span>
+<span class="lineNum">   44</span>              :   } </span>
+<span class="lineNum">   45</span><span class="lineCov">      1  /   1:   stuff[0] = stuff[stuff.size()-1]; </span>
+<span class="lineNum">   46</span><span class="lineCov">      1  /   1:   stuff.pop_back(); </span>
+<span class="lineNum">   47</span><span class="lineCov">      1  /   1:   int me = 0; </span>
+<span class="lineNum">   48</span><span class="lineCov">      2  /   2:   while(indexChildL(me) &lt; size()){ </span>
+<span class="lineNum">   49</span><span class="lineCov">      1  /   1:     int child = indexChildL(me); </span>
+<span class="lineNum">   50</span><span class="lineCov">      1  /   1:     if(indexChildR(me) &lt; size()){ </span>
+<span class="lineNum">   51</span><span class="lineCov">      1  /   1:       if(stuff[child] &lt; stuff[indexChildR(me)]){ </span>
+<span class="lineNum">   52</span><span class="lineCov">      1  /   1:         child = indexChildR(me); </span>
+<span class="lineNum">   53</span>              :       } </span>
+<span class="lineNum">   54</span>              :     } </span>
+<span class="lineNum">   55</span><span class="lineCov">      1  /   1:     if(stuff[me] &lt; stuff[child]){ </span>
+<span class="lineNum">   56</span><span class="lineCov">      1  /   1:       T tmp = stuff[me]; </span>
+<span class="lineNum">   57</span><span class="lineCov">      1  /   1:       stuff[me] = stuff[child]; </span>
+<span class="lineNum">   58</span><span class="lineCov">      1  /   1:       stuff[child] = tmp; </span>
+<span class="lineNum">   59</span><span class="lineCov">      1  /   1:       me = child; </span>
+<span class="lineNum">   60</span>              :     }else{ </span>
+<span class="lineNum">   61</span><span class="lineCov">      1  /   1:       break; </span>
+<span class="lineNum">   62</span>              :     } </span>
+<span class="lineNum">   63</span>              :   } </span>
+<span class="lineNum">   64</span><span class="lineCov">      2  /   2: } </span>
+<span class="lineNum">   65</span>              :  </span>
+<span class="lineNum">   66</span><span class="lineCov">      1  /   1: T top(){ </span>
+<span class="lineNum">   67</span>              :   &#047;&#047; returns maximum value from heap </span>
+<span class="lineNum">   68</span><span class="lineCov">      1  /   1:   if(size()){ </span>
+<span class="lineNum">   69</span><span class="lineCov">      1  /   1:     return stuff[0]; </span>
+<span class="lineNum">   70</span>              :   }else{ </span>
+<span class="lineNum">   71</span><span class="lineNoCov">      0  /   1:     throw logic_error(&quot;Empty heap is topless.&quot;); </span>
+<span class="lineNum">   72</span>              :   } </span>
+<span class="lineNum">   73</span><span class="linePartCov">      1  /   2: } </span>
+<span class="lineNum">   74</span>              :  </span>
+<span class="lineNum">   75</span><span class="lineCov">      1  /   1: unsigned int size(){ </span>
+<span class="lineNum">   76</span>              :   &#047;&#047; returns size of heap </span>
+<span class="lineNum">   77</span><span class="lineCov">      1  /   1:   return stuff.size(); </span>
+<span class="lineNum">   78</span><span class="linePartCov">      1  /   2: } </span>
+<span class="lineNum">   79</span>              :  </span>
+<span class="lineNum">   80</span>              : private: </span>
+<span class="lineNum">   81</span>              : vector&lt;T&gt; stuff; </span>
+<span class="lineNum">   82</span>              :  </span>
+<span class="lineNum">   83</span><span class="lineCov">      1  /   1: int indexChildL(int i){ </span>
+<span class="lineNum">   84</span>              :   &#047;&#047;returns child index for first value </span>
+<span class="lineNum">   85</span><span class="lineCov">      1  /   1:   return i*2+1; </span>
+<span class="lineNum">   86</span><span class="linePartCov">      1  /   2: } </span>
+<span class="lineNum">   87</span>              :  </span>
+<span class="lineNum">   88</span><span class="lineCov">      1  /   1: int indexChildR(int i){ </span>
+<span class="lineNum">   89</span>              :   &#047;&#047;returns child index for first value </span>
+<span class="lineNum">   90</span><span class="lineCov">      1  /   1:   return i*2+2; </span>
+<span class="lineNum">   91</span><span class="lineCov">      2  /   2: } </span>
+<span class="lineNum">   92</span>              :  </span>
+<span class="lineNum">   93</span><span class="lineCov">      1  /   1: int indexParent(int i){ </span>
+<span class="lineNum">   94</span>              :   &#047;&#047;returns parent index </span>
+<span class="lineNum">   95</span><span class="lineCov">      1  /   1:   if(i &lt;= 0){ </span>
+<span class="lineNum">   96</span><span class="lineNoCov">      0  /   2:     throw logic_error(&quot;Root has no parent&quot;); </span>
+<span class="lineNum">   97</span>              :   }else{ </span>
+<span class="lineNum">   98</span><span class="lineCov">      1  /   1:     return (i-1)&#047;2; </span>
+<span class="lineNum">   99</span>              :   } </span>
+<span class="lineNum">  100</span><span class="linePartCov">      1  /   2: } </span>
+<span class="lineNum">  101</span>              : }; </span>
+<span class="lineNum">  102</span>              :  </span>
+<span class="lineNum">  103</span>              :  </span>
+<span class="lineNum">  104</span>              : #endif </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>
