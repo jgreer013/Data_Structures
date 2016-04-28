@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">44</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">100.0%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">44</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">    3</span>              :  CxxTest: A lightweight C++ unit testing library. </span>
+<span class="lineNum">    4</span>              :  Copyright (c) 2008 Sandia Corporation. </span>
+<span class="lineNum">    5</span>              :  This software is distributed under the LGPL License v3 </span>
+<span class="lineNum">    6</span>              :  For more information, see the COPYING file in the top CxxTest directory. </span>
+<span class="lineNum">    7</span>              :  Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, </span>
+<span class="lineNum">    8</span>              :  the U.S. Government retains certain rights in this software. </span>
+<span class="lineNum">    9</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">   10</span>              : *&#047; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : #ifndef __cxxtest_TestRunner_h__ </span>
+<span class="lineNum">   13</span>              : #define __cxxtest_TestRunner_h__ </span>
+<span class="lineNum">   14</span>              :  </span>
+<span class="lineNum">   15</span>              : &#047;&#047; </span>
+<span class="lineNum">   16</span>              : &#047;&#047; TestRunner is the class that runs all the tests. </span>
+<span class="lineNum">   17</span>              : &#047;&#047; To use it, create an object that implements the TestListener </span>
+<span class="lineNum">   18</span>              : &#047;&#047; interface and call TestRunner::runAllTests( myListener ); </span>
+<span class="lineNum">   19</span>              : &#047;&#047; </span>
+<span class="lineNum">   20</span>              :  </span>
+<span class="lineNum">   21</span>              : #include &lt;cxxtest&#047;TestListener.h&gt; </span>
+<span class="lineNum">   22</span>              : #include &lt;cxxtest&#047;RealDescriptions.h&gt; </span>
+<span class="lineNum">   23</span>              : #include &lt;cxxtest&#047;TestSuite.h&gt; </span>
+<span class="lineNum">   24</span>              : #include &lt;cxxtest&#047;TestTracker.h&gt; </span>
+<span class="lineNum">   25</span>              :  </span>
+<span class="lineNum">   26</span>              : namespace CxxTest </span>
+<span class="lineNum">   27</span>              : { </span>
+<span class="lineNum">   28</span>              : class TestRunner </span>
+<span class="lineNum">   29</span>              : { </span>
+<span class="lineNum">   30</span>              : public: </span>
+<span class="lineNum">   31</span>              :  </span>
+<span class="lineNum">   32</span>              :     static void setListener(TestListener* listener) </span>
+<span class="lineNum">   33</span>              :     { </span>
+<span class="lineNum">   34</span>              :         tracker().setListener(listener); </span>
+<span class="lineNum">   35</span>              :     } </span>
+<span class="lineNum">   36</span>              :  </span>
+<span class="lineNum">   37</span><span class="lineCov">      1  /   1:     static void runAllTests(TestListener &amp;listener) </span>
+<span class="lineNum">   38</span>              :     { </span>
+<span class="lineNum">   39</span><span class="lineCov">      1  /   1:         tracker().setListener(&amp;listener); </span>
+<span class="lineNum">   40</span><span class="lineCov">      1  /   1:         _TS_TRY { TestRunner().runWorld(); } </span>
+<span class="lineNum">   41</span>              :         _TS_LAST_CATCH( { tracker().failedTest(__FILE__, __LINE__, &quot;Exception thrown from world&quot;); }); </span>
+<span class="lineNum">   42</span><span class="lineCov">      1  /   1:         tracker().setListener(0); </span>
+<span class="lineNum">   43</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   44</span>              :  </span>
+<span class="lineNum">   45</span>              :     static void runAllTests(TestListener *listener) </span>
+<span class="lineNum">   46</span>              :     { </span>
+<span class="lineNum">   47</span>              :         if (listener) </span>
+<span class="lineNum">   48</span>              :         { </span>
+<span class="lineNum">   49</span>              :             listener-&gt;warning(__FILE__, __LINE__, &quot;Deprecated; Use runAllTests( TestListener &amp; )&quot;); </span>
+<span class="lineNum">   50</span>              :             runAllTests(*listener); </span>
+<span class="lineNum">   51</span>              :         } </span>
+<span class="lineNum">   52</span>              :     } </span>
+<span class="lineNum">   53</span>              :  </span>
+<span class="lineNum">   54</span>              : private: </span>
+<span class="lineNum">   55</span><span class="lineCov">      1  /   1:     void runWorld() </span>
+<span class="lineNum">   56</span>              :     { </span>
+<span class="lineNum">   57</span><span class="lineCov">      1  /   1:         RealWorldDescription wd; </span>
+<span class="lineNum">   58</span><span class="linePartCov">      2  /   3:         WorldGuard sg; </span>
+<span class="lineNum">   59</span>              :  </span>
+<span class="lineNum">   60</span><span class="lineCov">      1  /   1:         tracker().enterWorld(wd); </span>
+<span class="lineNum">   61</span><span class="lineCov">      1  /   1:         if (wd.setUp()) </span>
+<span class="lineNum">   62</span>              :         { </span>
+<span class="lineNum">   63</span><span class="lineCov">      2  /   2:             for (SuiteDescription *sd = wd.firstSuite(); sd; sd = sd-&gt;next()) </span>
+<span class="lineNum">   64</span>              :             { </span>
+<span class="lineNum">   65</span><span class="lineCov">      1  /   1:                 if (sd-&gt;active()) </span>
+<span class="lineNum">   66</span>              :                 { </span>
+<span class="lineNum">   67</span><span class="lineCov">      1  /   1:                     runSuite(*sd); </span>
+<span class="lineNum">   68</span>              :                 } </span>
+<span class="lineNum">   69</span>              :             } </span>
+<span class="lineNum">   70</span>              :  </span>
+<span class="lineNum">   71</span><span class="lineCov">      1  /   1:             wd.tearDown(); </span>
+<span class="lineNum">   72</span>              :         } </span>
+<span class="lineNum">   73</span><span class="linePartCov">      2  /   3:         tracker().leaveWorld(wd); </span>
+<span class="lineNum">   74</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   75</span>              :  </span>
+<span class="lineNum">   76</span><span class="lineCov">      1  /   1:     void runSuite(SuiteDescription &amp;sd) </span>
+<span class="lineNum">   77</span>              :     { </span>
+<span class="lineNum">   78</span><span class="lineCov">      1  /   1:         StateGuard sg; </span>
+<span class="lineNum">   79</span>              :  </span>
+<span class="lineNum">   80</span><span class="lineCov">      1  /   1:         tracker().enterSuite(sd); </span>
+<span class="lineNum">   81</span><span class="lineCov">      1  /   1:         if (sd.setUp()) </span>
+<span class="lineNum">   82</span>              :         { </span>
+<span class="lineNum">   83</span><span class="lineCov">      2  /   2:             for (TestDescription *td = sd.firstTest(); td; td = td-&gt;next()) </span>
+<span class="lineNum">   84</span>              :             { </span>
+<span class="lineNum">   85</span><span class="lineCov">      1  /   1:                 if (td-&gt;active()) </span>
+<span class="lineNum">   86</span>              :                 { </span>
+<span class="lineNum">   87</span><span class="lineCov">      1  /   1:                     runTest(*td); </span>
+<span class="lineNum">   88</span>              :                 } </span>
+<span class="lineNum">   89</span>              :             } </span>
+<span class="lineNum">   90</span>              :  </span>
+<span class="lineNum">   91</span><span class="lineCov">      1  /   1:             sd.tearDown(); </span>
+<span class="lineNum">   92</span>              :         } </span>
+<span class="lineNum">   93</span><span class="lineCov">      1  /   1:         tracker().leaveSuite(sd); </span>
+<span class="lineNum">   94</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   95</span>              :  </span>
+<span class="lineNum">   96</span><span class="lineCov">      1  /   1:     void runTest(TestDescription &amp;td) </span>
+<span class="lineNum">   97</span>              :     { </span>
+<span class="lineNum">   98</span><span class="lineCov">      1  /   1:         StateGuard sg; </span>
+<span class="lineNum">   99</span>              :  </span>
+<span class="lineNum">  100</span><span class="lineCov">      1  /   1:         tracker().enterTest(td); </span>
+<span class="lineNum">  101</span><span class="lineCov">      1  /   1:         if (td.setUp()) </span>
+<span class="lineNum">  102</span>              :         { </span>
+<span class="lineNum">  103</span><span class="lineCov">      1  /   1:             td.run(); </span>
+<span class="lineNum">  104</span><span class="lineCov">      1  /   1:             td.tearDown(); </span>
+<span class="lineNum">  105</span>              :         } </span>
+<span class="lineNum">  106</span><span class="lineCov">      1  /   1:         tracker().leaveTest(td); </span>
+<span class="lineNum">  107</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  108</span>              :  </span>
+<span class="lineNum">  109</span>              :     class StateGuard </span>
+<span class="lineNum">  110</span>              :     { </span>
+<span class="lineNum">  111</span>              : #ifdef _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  112</span>              :         bool _abortTestOnFail; </span>
+<span class="lineNum">  113</span>              : #endif &#047;&#047; _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  114</span>              :         unsigned _maxDumpSize; </span>
+<span class="lineNum">  115</span>              :  </span>
+<span class="lineNum">  116</span>              :     public: </span>
+<span class="lineNum">  117</span><span class="lineCov">      1  /   1:         StateGuard() </span>
+<span class="lineNum">  118</span>              :         { </span>
+<span class="lineNum">  119</span>              : #ifdef _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  120</span>              :             _abortTestOnFail = abortTestOnFail(); </span>
+<span class="lineNum">  121</span>              : #endif &#047;&#047; _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  122</span><span class="lineCov">      1  /   1:             _maxDumpSize = maxDumpSize(); </span>
+<span class="lineNum">  123</span><span class="linePartCov">      1  /   2:         } </span>
+<span class="lineNum">  124</span>              :  </span>
+<span class="lineNum">  125</span><span class="lineCov">      1  /   1:         ~StateGuard() </span>
+<span class="lineNum">  126</span>              :         { </span>
+<span class="lineNum">  127</span>              : #ifdef _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  128</span>              :             setAbortTestOnFail(_abortTestOnFail); </span>
+<span class="lineNum">  129</span>              : #endif &#047;&#047; _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  130</span><span class="lineCov">      1  /   1:             setMaxDumpSize(_maxDumpSize); </span>
+<span class="lineNum">  131</span><span class="linePartCov">      1  /   2:         } </span>
+<span class="lineNum">  132</span>              :     }; </span>
+<span class="lineNum">  133</span>              :  </span>
+<span class="lineNum">  134</span><span class="linePartCov">      2  /   3:     class WorldGuard : public StateGuard </span>
+<span class="lineNum">  135</span>              :     { </span>
+<span class="lineNum">  136</span>              :     public: </span>
+<span class="lineNum">  137</span><span class="lineCov">      2  /   2:         WorldGuard() : StateGuard() </span>
+<span class="lineNum">  138</span>              :         { </span>
+<span class="lineNum">  139</span>              : #ifdef _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  140</span>              :             setAbortTestOnFail(CXXTEST_DEFAULT_ABORT); </span>
+<span class="lineNum">  141</span>              : #endif &#047;&#047; _CXXTEST_HAVE_EH </span>
+<span class="lineNum">  142</span><span class="lineCov">      1  /   1:             setMaxDumpSize(CXXTEST_MAX_DUMP_SIZE); </span>
+<span class="lineNum">  143</span><span class="linePartCov">      1  /   2:         } </span>
+<span class="lineNum">  144</span>              :     }; </span>
+<span class="lineNum">  145</span>              : }; </span>
+<span class="lineNum">  146</span>              :  </span>
+<span class="lineNum">  147</span>              : &#047;&#047; </span>
+<span class="lineNum">  148</span>              : &#047;&#047; For --no-static-init </span>
+<span class="lineNum">  149</span>              : &#047;&#047; </span>
+<span class="lineNum">  150</span>              : void initialize(); </span>
+<span class="lineNum">  151</span>              : } </span>
+<span class="lineNum">  152</span>              :  </span>
+<span class="lineNum">  153</span>              :  </span>
+<span class="lineNum">  154</span>              : #endif &#047;&#047; __cxxtest_TestRunner_h__ </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

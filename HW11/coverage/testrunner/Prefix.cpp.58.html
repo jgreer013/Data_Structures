@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">176</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">100.0%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">176</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              :    Trie (Prefix) class for storing and retrieving strings. </span>
+<span class="lineNum">    3</span>              :    Jeremiah Greer </span>
+<span class="lineNum">    4</span>              :    November 2015 </span>
+<span class="lineNum">    5</span>              :  *&#047; </span>
+<span class="lineNum">    6</span>              : #include &lt;iostream&gt; </span>
+<span class="lineNum">    7</span>              : #include &lt;assert.h&gt; </span>
+<span class="lineNum">    8</span>              : #include &lt;math.h&gt; </span>
+<span class="lineNum">    9</span>              : #include &lt;stdlib.h&gt; </span>
+<span class="lineNum">   10</span>              : #include &quot;Prefix.h&quot; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : using namespace std; </span>
+<span class="lineNum">   13</span>              :  </span>
+<span class="lineNum">   14</span>              : &#047;&#047; Initializes pointers to NULL because c++ can&#039;t do it itself. </span>
+<span class="lineNum">   15</span><span class="lineCov">      1  /   1: void setLinks(Node_t* node){ </span>
+<span class="lineNum">   16</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">   17</span><span class="lineCov">      1  /   1:     node-&gt;links[i] = NULL; </span>
+<span class="lineNum">   18</span>              :   } </span>
+<span class="lineNum">   19</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   20</span>              : &#047;&#047; fill me in! </span>
+<span class="lineNum">   21</span>              : &#047;&#047; Converts string to lowercase </span>
+<span class="lineNum">   22</span><span class="lineCov">      1  /   1: string lower(string thing){ </span>
+<span class="lineNum">   23</span><span class="lineCov">      1  /   1:   string ret = &quot;&quot;; </span>
+<span class="lineNum">   24</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; thing.length(); i++){ </span>
+<span class="lineNum">   25</span><span class="lineCov">      1  /   1:     if(thing[i] &gt;= &#039;A&#039; &amp;&amp; thing[i] &lt;= &#039;Z&#039;){ </span>
+<span class="lineNum">   26</span><span class="lineCov">      1  /   1:       ret += (thing[i] - &#039;A&#039; + &#039;a&#039;); </span>
+<span class="lineNum">   27</span>              :     } </span>
+<span class="lineNum">   28</span><span class="lineCov">      1  /   1:     else if(isalpha(thing[i]) == false){ </span>
+<span class="lineNum">   29</span><span class="lineCov">      1  /   1:       ret += &#039; &#039;; </span>
+<span class="lineNum">   30</span>              :     } </span>
+<span class="lineNum">   31</span>              :     else{ </span>
+<span class="lineNum">   32</span><span class="lineCov">      1  /   1:       ret += thing[i]; </span>
+<span class="lineNum">   33</span>              :     } </span>
+<span class="lineNum">   34</span>              :   } </span>
+<span class="lineNum">   35</span><span class="lineCov">      1  /   1:   return ret; </span>
+<span class="lineNum">   36</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   37</span>              :  </span>
+<span class="lineNum">   38</span><span class="lineCov">      1  /   1: int Prefix::charIndex(char letter){ </span>
+<span class="lineNum">   39</span><span class="lineCov">      1  /   1:   if(letter == &#039; &#039;){ </span>
+<span class="lineNum">   40</span><span class="lineCov">      1  /   1:     return 26; </span>
+<span class="lineNum">   41</span>              :   } </span>
+<span class="lineNum">   42</span><span class="lineCov">      1  /   1:   return letter - &#039;a&#039;; </span>
+<span class="lineNum">   43</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   44</span>              :  </span>
+<span class="lineNum">   45</span>              : &#047;&#047; Default Constructor </span>
+<span class="lineNum">   46</span><span class="lineCov">      1  /   1: Prefix::Prefix(){ </span>
+<span class="lineNum">   47</span><span class="lineCov">      1  /   1:   root = new Node_t; </span>
+<span class="lineNum">   48</span><span class="lineCov">      1  /   1:   setLinks(root); </span>
+<span class="lineNum">   49</span><span class="lineCov">      1  /   1:   num_of_nodes = 1; </span>
+<span class="lineNum">   50</span><span class="lineCov">      1  /   1:   num_of_strings = 0; </span>
+<span class="lineNum">   51</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   52</span>              :  </span>
+<span class="lineNum">   53</span>              :  </span>
+<span class="lineNum">   54</span>              : &#047;&#047; Copy Constructor </span>
+<span class="lineNum">   55</span><span class="lineCov">      1  /   1: Prefix::Prefix(const Prefix &amp;copy){ </span>
+<span class="lineNum">   56</span><span class="lineCov">      1  /   1:   root = new Node_t; </span>
+<span class="lineNum">   57</span><span class="lineCov">      1  /   1:   setLinks(root); </span>
+<span class="lineNum">   58</span><span class="lineCov">      1  /   1:   fullCopy(root, copy.root); </span>
+<span class="lineNum">   59</span><span class="lineCov">      1  /   1:   num_of_nodes = copy.num_of_nodes; </span>
+<span class="lineNum">   60</span><span class="lineCov">      1  /   1:   num_of_strings = copy.num_of_strings; </span>
+<span class="lineNum">   61</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   62</span>              :  </span>
+<span class="lineNum">   63</span>              :  </span>
+<span class="lineNum">   64</span>              : &#047;&#047; Assignment Overload </span>
+<span class="lineNum">   65</span><span class="lineCov">      1  /   1: Prefix&amp; Prefix::operator=(const Prefix &amp;other){ </span>
+<span class="lineNum">   66</span><span class="lineCov">      1  /   1:   if(this == &amp;other){ </span>
+<span class="lineNum">   67</span><span class="lineCov">      1  /   1:     return *this; </span>
+<span class="lineNum">   68</span>              :   } </span>
+<span class="lineNum">   69</span><span class="lineCov">      1  /   1:   this-&gt;clear(root); </span>
+<span class="lineNum">   70</span><span class="lineCov">      1  /   1:   fullCopy(root, other.root); </span>
+<span class="lineNum">   71</span><span class="lineCov">      1  /   1:   num_of_nodes = other.num_of_nodes; </span>
+<span class="lineNum">   72</span><span class="lineCov">      1  /   1:   num_of_strings = other.num_of_strings; </span>
+<span class="lineNum">   73</span><span class="lineCov">      1  /   1:   return *this; </span>
+<span class="lineNum">   74</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   75</span>              :  </span>
+<span class="lineNum">   76</span>              :  </span>
+<span class="lineNum">   77</span>              : &#047;&#047; Destructor </span>
+<span class="lineNum">   78</span><span class="lineCov">      1  /   1: Prefix::~Prefix(){ </span>
+<span class="lineNum">   79</span><span class="lineCov">      1  /   1:   this-&gt;clear(root); </span>
+<span class="lineNum">   80</span><span class="lineCov">      1  /   1:   delete root; </span>
+<span class="lineNum">   81</span><span class="lineCov">      1  /   1:   root = NULL; </span>
+<span class="lineNum">   82</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   83</span>              :  </span>
+<span class="lineNum">   84</span>              :  </span>
+<span class="lineNum">   85</span>              :  </span>
+<span class="lineNum">   86</span>              : &#047;&#047; Secondary size function for testing purposes </span>
+<span class="lineNum">   87</span><span class="lineCov">      1  /   1: unsigned int Prefix::sizeN(){ </span>
+<span class="lineNum">   88</span><span class="lineCov">      1  /   1:   return num_of_nodes; </span>
+<span class="lineNum">   89</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   90</span>              :  </span>
+<span class="lineNum">   91</span>              : &#047;&#047; Secondary size function for testing purposes </span>
+<span class="lineNum">   92</span><span class="lineCov">      1  /   1: unsigned int Prefix::sizeS(){ </span>
+<span class="lineNum">   93</span><span class="lineCov">      1  /   1:   return num_of_strings; </span>
+<span class="lineNum">   94</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">   95</span>              :  </span>
+<span class="lineNum">   96</span>              : &#047;&#047; Inserts word into tree </span>
+<span class="lineNum">   97</span><span class="lineCov">      1  /   1: bool Prefix::insert(string thing){ </span>
+<span class="lineNum">   98</span><span class="lineCov">      1  /   1:   string lowered = lower(thing); </span>
+<span class="lineNum">   99</span><span class="lineCov">      1  /   1:   return insert(lowered, root); </span>
+<span class="lineNum">  100</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  101</span>              :  </span>
+<span class="lineNum">  102</span>              :  </span>
+<span class="lineNum">  103</span>              : &#047;&#047; Return height of tree </span>
+<span class="lineNum">  104</span><span class="lineCov">      1  /   1: int Prefix::getHeight(){ </span>
+<span class="lineNum">  105</span><span class="lineCov">      1  /   1:   return getHeight(root) - 2; </span>
+<span class="lineNum">  106</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  107</span>              :  </span>
+<span class="lineNum">  108</span>              :  </span>
+<span class="lineNum">  109</span>              : &#047;&#047; Return the number of nodes </span>
+<span class="lineNum">  110</span><span class="lineCov">      1  /   1: int Prefix::getNumNodes(){ </span>
+<span class="lineNum">  111</span><span class="lineCov">      1  /   1:   return getNumNodes(root); </span>
+<span class="lineNum">  112</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  113</span>              :  </span>
+<span class="lineNum">  114</span>              :  </span>
+<span class="lineNum">  115</span>              : &#047;&#047; Return number of words </span>
+<span class="lineNum">  116</span><span class="lineCov">      1  /   1: int Prefix::getNumStored(){ </span>
+<span class="lineNum">  117</span><span class="lineCov">      1  /   1:   return getNumStored(root); </span>
+<span class="lineNum">  118</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  119</span>              :  </span>
+<span class="lineNum">  120</span>              :  </span>
+<span class="lineNum">  121</span>              : &#047;&#047; Return a vector of strings which start with a given prefix </span>
+<span class="lineNum">  122</span><span class="lineCov">      1  /   1: vector&lt;string&gt; Prefix::getWPrefix(string prefix){ </span>
+<span class="lineNum">  123</span><span class="lineCov">      1  /   1:   vector&lt;string&gt; ret; </span>
+<span class="lineNum">  124</span><span class="lineCov">      1  /   1:   Node_t* node = root; </span>
+<span class="lineNum">  125</span><span class="linePartCov">      2  /   3:   string orig_prefix = prefix; </span>
+<span class="lineNum">  126</span><span class="lineCov">      2  /   2:   while(prefix.length() &gt; 0){ </span>
+<span class="lineNum">  127</span><span class="lineCov">      1  /   1:     if(node == NULL){ </span>
+<span class="lineNum">  128</span><span class="lineCov">      1  /   1:       return ret; </span>
+<span class="lineNum">  129</span>              :     } </span>
+<span class="lineNum">  130</span><span class="lineCov">      1  /   1:     node = node-&gt;links[charIndex(prefix[0])]; </span>
+<span class="lineNum">  131</span><span class="linePartCov">      1  /   2:     prefix = prefix.substr(1,prefix.length()-1); </span>
+<span class="lineNum">  132</span>              :   } </span>
+<span class="lineNum">  133</span><span class="linePartCov">      1  /   2:   getAllStored(node, &quot;&quot;, ret); </span>
+<span class="lineNum">  134</span><span class="linePartCov">      2  /   3:   vector&lt;string&gt; ret2; </span>
+<span class="lineNum">  135</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; ret.size(); i++){ </span>
+<span class="lineNum">  136</span><span class="linePartCov">      1  /   2:     ret2.push_back(orig_prefix + ret[i]); </span>
+<span class="lineNum">  137</span>              :   } </span>
+<span class="lineNum">  138</span><span class="linePartCov">      2  /   3:   return ret2; </span>
+<span class="lineNum">  139</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  140</span>              :  </span>
+<span class="lineNum">  141</span>              :  </span>
+<span class="lineNum">  142</span>              : &#047;&#047; Return all strings contained in the tree </span>
+<span class="lineNum">  143</span><span class="lineCov">      1  /   1: vector&lt;string&gt; Prefix::getAllStored(){ </span>
+<span class="lineNum">  144</span><span class="lineCov">      1  /   1:   vector&lt;string&gt; ret; </span>
+<span class="lineNum">  145</span><span class="linePartCov">      1  /   2:   getAllStored(root, &quot;&quot;, ret); </span>
+<span class="lineNum">  146</span><span class="lineCov">      1  /   1:   return ret; </span>
+<span class="lineNum">  147</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  148</span>              :  </span>
+<span class="lineNum">  149</span>              :  </span>
+<span class="lineNum">  150</span>              : &#047;&#047; Return the number of strings containing a given prefix </span>
+<span class="lineNum">  151</span><span class="lineCov">      1  /   1: int Prefix::getNumWPrefix(string prefix){ </span>
+<span class="lineNum">  152</span><span class="lineCov">      1  /   1:   vector&lt;string&gt; stored = this-&gt;getWPrefix(prefix); </span>
+<span class="lineNum">  153</span><span class="lineCov">      1  /   1:   return stored.size(); </span>
+<span class="lineNum">  154</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  155</span>              :  </span>
+<span class="lineNum">  156</span>              :  </span>
+<span class="lineNum">  157</span>              : &#047;&#047; Return true if thing is stored in the tree </span>
+<span class="lineNum">  158</span><span class="lineCov">      1  /   1: bool Prefix::isStored(string thing){ </span>
+<span class="lineNum">  159</span><span class="lineCov">      1  /   1:   return isStored(thing, root); </span>
+<span class="lineNum">  160</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  161</span>              :  </span>
+<span class="lineNum">  162</span>              : &#047;&#047; BEGIN RECURSION SECTION </span>
+<span class="lineNum">  163</span><span class="lineCov">      1  /   1: bool Prefix::insert(string thing, Node_t* node){ </span>
+<span class="lineNum">  164</span><span class="lineCov">      1  /   1:   int len = thing.length(); </span>
+<span class="lineNum">  165</span><span class="lineCov">      1  /   1:   if(len != 0){ </span>
+<span class="lineNum">  166</span><span class="lineCov">      1  /   1:     if(node-&gt;links[charIndex(thing[0])] == NULL){ </span>
+<span class="lineNum">  167</span><span class="lineCov">      1  /   1:       Node_t* new_node1 = new Node_t; </span>
+<span class="lineNum">  168</span><span class="lineCov">      1  /   1:       setLinks(new_node1); </span>
+<span class="lineNum">  169</span><span class="lineCov">      1  /   1:       num_of_nodes++; </span>
+<span class="lineNum">  170</span><span class="lineCov">      1  /   1:       new_node1-&gt;word = false; </span>
+<span class="lineNum">  171</span><span class="lineCov">      1  /   1:       node-&gt;links[charIndex(thing[0])] = new_node1; </span>
+<span class="lineNum">  172</span>              :     } </span>
+<span class="lineNum">  173</span><span class="linePartCov">      1  /   2:     return insert(thing.substr(1,len-1), node-&gt;links[charIndex(thing[0])]); </span>
+<span class="lineNum">  174</span>              :   } </span>
+<span class="lineNum">  175</span>              :   else{ </span>
+<span class="lineNum">  176</span>              :     &#047;* </span>
+<span class="lineNum">  177</span>              :     if(node == NULL){ </span>
+<span class="lineNum">  178</span>              :       Node_t* new_node2 = new Node_t; </span>
+<span class="lineNum">  179</span>              :       setLinks(new_node2); </span>
+<span class="lineNum">  180</span>              :       num_of_nodes++; </span>
+<span class="lineNum">  181</span>              :       node = new_node2; </span>
+<span class="lineNum">  182</span>              :     } </span>
+<span class="lineNum">  183</span>              :     *&#047; </span>
+<span class="lineNum">  184</span><span class="lineCov">      1  /   1:     if(node-&gt;word == true){ </span>
+<span class="lineNum">  185</span><span class="lineCov">      1  /   1:       return true; </span>
+<span class="lineNum">  186</span>              :     } </span>
+<span class="lineNum">  187</span><span class="lineCov">      1  /   1:     node-&gt;word = true; </span>
+<span class="lineNum">  188</span><span class="lineCov">      1  /   1:     num_of_strings++; </span>
+<span class="lineNum">  189</span><span class="lineCov">      1  /   1:     return false; </span>
+<span class="lineNum">  190</span>              :   } </span>
+<span class="lineNum">  191</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  192</span>              :  </span>
+<span class="lineNum">  193</span>              :  </span>
+<span class="lineNum">  194</span><span class="lineCov">      1  /   1: int Prefix::getHeight(Node_t* node){ </span>
+<span class="lineNum">  195</span><span class="lineCov">      1  /   1:   if(node == NULL){ </span>
+<span class="lineNum">  196</span><span class="lineCov">      1  /   1:     return 1; </span>
+<span class="lineNum">  197</span>              :   } </span>
+<span class="lineNum">  198</span>              :   else{ </span>
+<span class="lineNum">  199</span><span class="lineCov">      1  /   1:     unsigned int max_height = 0; </span>
+<span class="lineNum">  200</span><span class="lineCov">      2  /   2:     for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  201</span><span class="lineCov">      1  /   1:       unsigned int ht = getHeight(node-&gt;links[i]); </span>
+<span class="lineNum">  202</span><span class="lineCov">      1  /   1:       if(ht &gt; max_height){ </span>
+<span class="lineNum">  203</span><span class="lineCov">      1  /   1:         max_height = ht; </span>
+<span class="lineNum">  204</span>              :       } </span>
+<span class="lineNum">  205</span>              :     } </span>
+<span class="lineNum">  206</span><span class="lineCov">      1  /   1:     return max_height + 1; </span>
+<span class="lineNum">  207</span>              :   } </span>
+<span class="lineNum">  208</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  209</span>              :  </span>
+<span class="lineNum">  210</span><span class="lineCov">      1  /   1: int Prefix::getNumNodes(Node_t* node){ </span>
+<span class="lineNum">  211</span><span class="lineCov">      1  /   1:   if(node == NULL){ </span>
+<span class="lineNum">  212</span><span class="lineCov">      1  /   1:     return 0; </span>
+<span class="lineNum">  213</span>              :   } </span>
+<span class="lineNum">  214</span>              :   else{ </span>
+<span class="lineNum">  215</span><span class="lineCov">      1  /   1:     unsigned int num_nodes = 0; </span>
+<span class="lineNum">  216</span><span class="lineCov">      2  /   2:     for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  217</span><span class="lineCov">      1  /   1:       unsigned int ht = getNumNodes(node-&gt;links[i]); </span>
+<span class="lineNum">  218</span><span class="lineCov">      1  /   1:       num_nodes += ht; </span>
+<span class="lineNum">  219</span>              :     } </span>
+<span class="lineNum">  220</span><span class="lineCov">      1  /   1:     return num_nodes + 1; </span>
+<span class="lineNum">  221</span>              :   } </span>
+<span class="lineNum">  222</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  223</span>              :  </span>
+<span class="lineNum">  224</span><span class="lineCov">      1  /   1: int Prefix::getNumStored(Node_t* node){ </span>
+<span class="lineNum">  225</span><span class="lineCov">      1  /   1:   unsigned int num_words = 0; </span>
+<span class="lineNum">  226</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  227</span><span class="lineCov">      1  /   1:     Node_t* other = node-&gt;links[i]; </span>
+<span class="lineNum">  228</span><span class="lineCov">      1  /   1:     if(other != NULL){ </span>
+<span class="lineNum">  229</span><span class="lineCov">      1  /   1:       if(other-&gt;word == true){ </span>
+<span class="lineNum">  230</span><span class="lineCov">      1  /   1:         num_words++; </span>
+<span class="lineNum">  231</span>              :       } </span>
+<span class="lineNum">  232</span><span class="lineCov">      1  /   1:       num_words += getNumStored(other); </span>
+<span class="lineNum">  233</span>              :        </span>
+<span class="lineNum">  234</span>              :     } </span>
+<span class="lineNum">  235</span>              :   } </span>
+<span class="lineNum">  236</span><span class="lineCov">      1  /   1:   return num_words; </span>
+<span class="lineNum">  237</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  238</span>              :  </span>
+<span class="lineNum">  239</span><span class="lineCov">      1  /   1: void Prefix::getAllStored(Node_t* node, string words, vector&lt;string&gt; &amp;all_words){ </span>
+<span class="lineNum">  240</span><span class="lineCov">      1  /   1:   if(node == NULL){ </span>
+<span class="lineNum">  241</span><span class="linePartCov">      1  /   2:     return; </span>
+<span class="lineNum">  242</span>              :   } </span>
+<span class="lineNum">  243</span>              :   else{ </span>
+<span class="lineNum">  244</span><span class="lineCov">      2  /   2:     for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  245</span><span class="lineCov">      1  /   1:       Node_t* other = node-&gt;links[i]; </span>
+<span class="lineNum">  246</span><span class="lineCov">      1  /   1:       string current_word = words; </span>
+<span class="lineNum">  247</span><span class="lineCov">      1  /   1:       if(other != NULL){ </span>
+<span class="lineNum">  248</span><span class="lineCov">      1  /   1:         current_word += (char)(i + &#039;a&#039;); </span>
+<span class="lineNum">  249</span><span class="lineCov">      1  /   1:         if(other-&gt;word == true){ </span>
+<span class="lineNum">  250</span><span class="lineCov">      1  /   1:           all_words.push_back(current_word); </span>
+<span class="lineNum">  251</span>              :         } </span>
+<span class="lineNum">  252</span><span class="linePartCov">      1  /   2:         getAllStored(other, current_word, all_words); </span>
+<span class="lineNum">  253</span>              :       } </span>
+<span class="lineNum">  254</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  255</span>              :   } </span>
+<span class="lineNum">  256</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  257</span>              :  </span>
+<span class="lineNum">  258</span><span class="lineCov">      1  /   1: bool Prefix::isStored(string thing, Node_t* node){ </span>
+<span class="lineNum">  259</span><span class="lineCov">      1  /   1:   if(node == NULL){ </span>
+<span class="lineNum">  260</span><span class="lineCov">      1  /   1:     return false; </span>
+<span class="lineNum">  261</span>              :   } </span>
+<span class="lineNum">  262</span><span class="lineCov">      1  /   1:   if(thing.length() == 0){ </span>
+<span class="lineNum">  263</span><span class="lineCov">      1  /   1:     if(node-&gt;word == true){ </span>
+<span class="lineNum">  264</span><span class="lineCov">      1  /   1:       return true; </span>
+<span class="lineNum">  265</span>              :     } </span>
+<span class="lineNum">  266</span>              :     else{ </span>
+<span class="lineNum">  267</span><span class="lineCov">      1  /   1:       return false; </span>
+<span class="lineNum">  268</span>              :     } </span>
+<span class="lineNum">  269</span>              :   } </span>
+<span class="lineNum">  270</span><span class="lineCov">      1  /   1:   return isStored(thing.substr(1), node-&gt;links[charIndex(thing[0])]); </span>
+<span class="lineNum">  271</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  272</span>              :  </span>
+<span class="lineNum">  273</span><span class="lineCov">      1  /   1: void Prefix::fullCopy(Node_t* node, Node_t* other_node){ </span>
+<span class="lineNum">  274</span><span class="lineCov">      1  /   1:   node-&gt;word = other_node-&gt;word; </span>
+<span class="lineNum">  275</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  276</span><span class="lineCov">      1  /   1:     if(other_node-&gt;links[i] != NULL){ </span>
+<span class="lineNum">  277</span><span class="lineCov">      1  /   1:       Node_t* new_node = new Node_t; </span>
+<span class="lineNum">  278</span><span class="lineCov">      1  /   1:       setLinks(new_node); </span>
+<span class="lineNum">  279</span><span class="lineCov">      1  /   1:       node-&gt;links[i] = new_node; </span>
+<span class="lineNum">  280</span><span class="lineCov">      1  /   1:       fullCopy(new_node, other_node-&gt;links[i]); </span>
+<span class="lineNum">  281</span>              :     } </span>
+<span class="lineNum">  282</span>              :   } </span>
+<span class="lineNum">  283</span><span class="lineCov">      1  /   1: } </span>
+<span class="lineNum">  284</span>              :  </span>
+<span class="lineNum">  285</span>              :  </span>
+<span class="lineNum">  286</span><span class="lineCov">      1  /   1: void Prefix::clear(Node_t* n){ </span>
+<span class="lineNum">  287</span><span class="lineCov">      2  /   2:   for(unsigned int i = 0; i &lt; 27; i++){ </span>
+<span class="lineNum">  288</span><span class="lineCov">      1  /   1:     if(n-&gt;links[i] != NULL){ </span>
+<span class="lineNum">  289</span><span class="lineCov">      1  /   1:       clear(n-&gt;links[i]); </span>
+<span class="lineNum">  290</span>              :     } </span>
+<span class="lineNum">  291</span>              :   } </span>
+<span class="lineNum">  292</span><span class="lineCov">      1  /   1:   if(n != root){ </span>
+<span class="lineNum">  293</span><span class="lineCov">      1  /   1:     delete n; </span>
+<span class="lineNum">  294</span><span class="lineCov">      1  /   1:     n = NULL; </span>
+<span class="lineNum">  295</span>              :   } </span>
+<span class="lineNum">  296</span><span class="linePartCov">      6  /   7: } </span>
+<span class="lineNum">  297</span>              :  </span>
+<span class="lineNum">  298</span>              :  </span>
+<span class="lineNum">  299</span>              :  </span>
+<span class="lineNum">  300</span>              :  </span>
+<span class="lineNum">  301</span>              :  </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

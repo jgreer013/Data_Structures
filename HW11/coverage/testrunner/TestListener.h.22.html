@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">41</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftLo" width="15%">9.8%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">4</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">    3</span>              :  CxxTest: A lightweight C++ unit testing library. </span>
+<span class="lineNum">    4</span>              :  Copyright (c) 2008 Sandia Corporation. </span>
+<span class="lineNum">    5</span>              :  This software is distributed under the LGPL License v3 </span>
+<span class="lineNum">    6</span>              :  For more information, see the COPYING file in the top CxxTest directory. </span>
+<span class="lineNum">    7</span>              :  Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, </span>
+<span class="lineNum">    8</span>              :  the U.S. Government retains certain rights in this software. </span>
+<span class="lineNum">    9</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">   10</span>              : *&#047; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : #ifndef __cxxtest__TestListener_h__ </span>
+<span class="lineNum">   13</span>              : #define __cxxtest__TestListener_h__ </span>
+<span class="lineNum">   14</span>              :  </span>
+<span class="lineNum">   15</span>              : &#047;&#047; </span>
+<span class="lineNum">   16</span>              : &#047;&#047; TestListener is the base class for all &quot;listeners&quot;, </span>
+<span class="lineNum">   17</span>              : &#047;&#047; i.e. classes that receive notifications of the </span>
+<span class="lineNum">   18</span>              : &#047;&#047; testing process. </span>
+<span class="lineNum">   19</span>              : &#047;&#047; </span>
+<span class="lineNum">   20</span>              : &#047;&#047; The names of the parameters are in comments to avoid </span>
+<span class="lineNum">   21</span>              : &#047;&#047; &quot;unused parameter&quot; warnings. </span>
+<span class="lineNum">   22</span>              : &#047;&#047; </span>
+<span class="lineNum">   23</span>              :  </span>
+<span class="lineNum">   24</span>              : #include &lt;cxxtest&#047;Descriptions.h&gt; </span>
+<span class="lineNum">   25</span>              :  </span>
+<span class="lineNum">   26</span>              : namespace CxxTest </span>
+<span class="lineNum">   27</span>              : { </span>
+<span class="lineNum">   28</span>              : class TestListener </span>
+<span class="lineNum">   29</span>              : { </span>
+<span class="lineNum">   30</span>              : public: </span>
+<span class="lineNum">   31</span><span class="linePartCov">      2  /   3:     TestListener() {} </span>
+<span class="lineNum">   32</span><span class="linePartCov">      2  /   5:     virtual ~TestListener() {} </span>
+<span class="lineNum">   33</span><span class="linePartCov">      2  /   3:     virtual void process_commandline(int&amp; &#047;*argc*&#047;, char** &#047;*argv*&#047;) {} </span>
+<span class="lineNum">   34</span>              :  </span>
+<span class="lineNum">   35</span><span class="lineNoCov">      0  /   3:     virtual void enterWorld(const WorldDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   36</span><span class="lineNoCov">      0  /   3:     virtual void enterSuite(const SuiteDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   37</span><span class="lineNoCov">      0  /   3:     virtual void enterTest(const TestDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   38</span><span class="lineNoCov">      0  /   1:     virtual void trace(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   39</span><span class="lineNoCov">      0  /   2:                        const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   40</span><span class="lineNoCov">      0  /   1:     virtual void warning(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   41</span><span class="lineNoCov">      0  /   2:                          const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   42</span><span class="lineNoCov">      0  /   1:     virtual void skippedTest(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   43</span><span class="lineNoCov">      0  /   2:                              const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   44</span><span class="lineNoCov">      0  /   1:     virtual void failedTest(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   45</span><span class="lineNoCov">      0  /   2:                             const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   46</span><span class="lineNoCov">      0  /   1:     virtual void failedAssert(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   47</span><span class="lineNoCov">      0  /   2:                               const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   48</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertEquals(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   49</span>              :                                     const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   50</span><span class="lineNoCov">      0  /   2:                                     const char * &#047;*x*&#047;, const char * &#047;*y*&#047;) {} </span>
+<span class="lineNum">   51</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertSameData(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   52</span>              :                                       const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   53</span>              :                                       const char * &#047;*sizeStr*&#047;, const void * &#047;*x*&#047;, </span>
+<span class="lineNum">   54</span><span class="lineNoCov">      0  /   2:                                       const void * &#047;*y*&#047;, unsigned &#047;*size*&#047;) {} </span>
+<span class="lineNum">   55</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertDelta(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   56</span>              :                                    const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   57</span>              :                                    const char * &#047;*dStr*&#047;, const char * &#047;*x*&#047;, </span>
+<span class="lineNum">   58</span><span class="lineNoCov">      0  /   2:                                    const char * &#047;*y*&#047;, const char * &#047;*d*&#047;) {} </span>
+<span class="lineNum">   59</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertDiffers(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   60</span>              :                                      const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   61</span><span class="lineNoCov">      0  /   2:                                      const char * &#047;*value*&#047;) {} </span>
+<span class="lineNum">   62</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertLessThan(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   63</span>              :                                       const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   64</span><span class="lineNoCov">      0  /   2:                                       const char * &#047;*x*&#047;, const char * &#047;*y*&#047;) {} </span>
+<span class="lineNum">   65</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertLessThanEquals(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   66</span>              :                                             const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   67</span><span class="lineNoCov">      0  /   2:                                             const char * &#047;*x*&#047;, const char * &#047;*y*&#047;) {} </span>
+<span class="lineNum">   68</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertPredicate(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   69</span><span class="lineNoCov">      0  /   2:                                        const char * &#047;*predicate*&#047;, const char * &#047;*xStr*&#047;, const char * &#047;*x*&#047;) {} </span>
+<span class="lineNum">   70</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertRelation(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   71</span>              :                                       const char * &#047;*relation*&#047;, const char * &#047;*xStr*&#047;, const char * &#047;*yStr*&#047;, </span>
+<span class="lineNum">   72</span><span class="lineNoCov">      0  /   2:                                       const char * &#047;*x*&#047;, const char * &#047;*y*&#047;) {} </span>
+<span class="lineNum">   73</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertThrows(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   74</span>              :                                     const char * &#047;*expression*&#047;, const char * &#047;*type*&#047;, </span>
+<span class="lineNum">   75</span><span class="lineNoCov">      0  /   2:                                     bool &#047;*otherThrown*&#047;) {} </span>
+<span class="lineNum">   76</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertThrowsNot(const char * &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   77</span><span class="lineNoCov">      0  /   2:                                        const char * &#047;*expression*&#047;) {} </span>
+<span class="lineNum">   78</span><span class="lineNoCov">      0  /   1:     virtual void failedAssertSameFiles(const char* &#047;*file*&#047;, int &#047;*line*&#047;, </span>
+<span class="lineNum">   79</span><span class="lineNoCov">      0  /   2:                                        const char* , const char*, const char*) {} </span>
+<span class="lineNum">   80</span><span class="lineNoCov">      0  /   3:     virtual void leaveTest(const TestDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   81</span><span class="linePartCov">      2  /   3:     virtual void leaveSuite(const SuiteDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   82</span><span class="lineNoCov">      0  /   3:     virtual void leaveWorld(const WorldDescription &amp; &#047;*desc*&#047;) {} </span>
+<span class="lineNum">   83</span>              : }; </span>
+<span class="lineNum">   84</span>              : } </span>
+<span class="lineNum">   85</span>              :  </span>
+<span class="lineNum">   86</span>              : #endif &#047;&#047; __cxxtest__TestListener_h__ </span>
+<span class="lineNum">   87</span>              :  </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

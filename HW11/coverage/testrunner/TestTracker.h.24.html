@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">9</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftMed" width="15%">66.7%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">6</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">    3</span>              :  CxxTest: A lightweight C++ unit testing library. </span>
+<span class="lineNum">    4</span>              :  Copyright (c) 2008 Sandia Corporation. </span>
+<span class="lineNum">    5</span>              :  This software is distributed under the LGPL License v3 </span>
+<span class="lineNum">    6</span>              :  For more information, see the COPYING file in the top CxxTest directory. </span>
+<span class="lineNum">    7</span>              :  Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, </span>
+<span class="lineNum">    8</span>              :  the U.S. Government retains certain rights in this software. </span>
+<span class="lineNum">    9</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">   10</span>              : *&#047; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : #ifndef __cxxtest__TestTracker_h__ </span>
+<span class="lineNum">   13</span>              : #define __cxxtest__TestTracker_h__ </span>
+<span class="lineNum">   14</span>              :  </span>
+<span class="lineNum">   15</span>              : &#047;&#047; </span>
+<span class="lineNum">   16</span>              : &#047;&#047; The TestTracker tracks running tests </span>
+<span class="lineNum">   17</span>              : &#047;&#047; The actual work is done in CountingListenerProxy, </span>
+<span class="lineNum">   18</span>              : &#047;&#047; but this way avoids cyclic references TestListener&lt;-&gt;CountingListenerProxy </span>
+<span class="lineNum">   19</span>              : &#047;&#047; </span>
+<span class="lineNum">   20</span>              :  </span>
+<span class="lineNum">   21</span>              : #include &lt;cxxtest&#047;TestListener.h&gt; </span>
+<span class="lineNum">   22</span>              : #include &lt;cxxtest&#047;DummyDescriptions.h&gt; </span>
+<span class="lineNum">   23</span>              :  </span>
+<span class="lineNum">   24</span>              : namespace CxxTest </span>
+<span class="lineNum">   25</span>              : { </span>
+<span class="lineNum">   26</span>              : class TestListener; </span>
+<span class="lineNum">   27</span>              :  </span>
+<span class="lineNum">   28</span>              : class TestTracker : public TestListener </span>
+<span class="lineNum">   29</span>              : { </span>
+<span class="lineNum">   30</span>              : public: </span>
+<span class="lineNum">   31</span>              :     virtual ~TestTracker(); </span>
+<span class="lineNum">   32</span>              :  </span>
+<span class="lineNum">   33</span>              :     static TestTracker &amp;tracker(); </span>
+<span class="lineNum">   34</span>              :     static bool print_tracing; </span>
+<span class="lineNum">   35</span>              :  </span>
+<span class="lineNum">   36</span>              :     const TestDescription *fixTest(const TestDescription *d) const; </span>
+<span class="lineNum">   37</span>              :     const SuiteDescription *fixSuite(const SuiteDescription *d) const; </span>
+<span class="lineNum">   38</span>              :     const WorldDescription *fixWorld(const WorldDescription *d) const; </span>
+<span class="lineNum">   39</span>              :  </span>
+<span class="lineNum">   40</span><span class="lineNoCov">      0  /   3:     const TestDescription &amp;test() const { return *_test; } </span>
+<span class="lineNum">   41</span><span class="lineNoCov">      0  /   3:     const SuiteDescription &amp;suite() const { return *_suite; } </span>
+<span class="lineNum">   42</span><span class="linePartCov">      2  /   3:     const WorldDescription &amp;world() const { return *_world; } </span>
+<span class="lineNum">   43</span>              :  </span>
+<span class="lineNum">   44</span><span class="linePartCov">      2  /   3:     bool testSkipped() const { return _testSkipped; } </span>
+<span class="lineNum">   45</span><span class="linePartCov">      2  /   3:     bool testFailed() const { return (testFailedAsserts() &gt; 0); } </span>
+<span class="lineNum">   46</span>              :     bool suiteFailed() const { return (suiteFailedTests() &gt; 0); } </span>
+<span class="lineNum">   47</span>              :     bool worldFailed() const { return (failedSuites() &gt; 0); } </span>
+<span class="lineNum">   48</span>              :  </span>
+<span class="lineNum">   49</span>              :     unsigned warnings() const { return _warnings; } </span>
+<span class="lineNum">   50</span><span class="lineNoCov">      0  /   3:     unsigned skippedTests() const { return _skippedTests; } </span>
+<span class="lineNum">   51</span><span class="linePartCov">      2  /   3:     unsigned failedTests() const { return _failedTests; } </span>
+<span class="lineNum">   52</span><span class="linePartCov">      2  /   3:     unsigned testFailedAsserts() const { return _testFailedAsserts; } </span>
+<span class="lineNum">   53</span>              :     unsigned suiteFailedTests() const { return _suiteFailedTests; } </span>
+<span class="lineNum">   54</span>              :     unsigned failedSuites() const { return _failedSuites; } </span>
+<span class="lineNum">   55</span>              :  </span>
+<span class="lineNum">   56</span>              :     void enterWorld(const WorldDescription &amp;wd); </span>
+<span class="lineNum">   57</span>              :     void enterSuite(const SuiteDescription &amp;sd); </span>
+<span class="lineNum">   58</span>              :     void enterTest(const TestDescription &amp;td); </span>
+<span class="lineNum">   59</span>              :     void leaveTest(const TestDescription &amp;td); </span>
+<span class="lineNum">   60</span>              :     void leaveSuite(const SuiteDescription &amp;sd); </span>
+<span class="lineNum">   61</span>              :     void leaveWorld(const WorldDescription &amp;wd); </span>
+<span class="lineNum">   62</span>              :     void trace(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   63</span>              :     void warning(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   64</span>              :     void skippedTest(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   65</span>              :     void failedTest(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   66</span>              :     void failedAssert(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   67</span>              :     void failedAssertEquals(const char *file, int line, </span>
+<span class="lineNum">   68</span>              :                             const char *xStr, const char *yStr, </span>
+<span class="lineNum">   69</span>              :                             const char *x, const char *y); </span>
+<span class="lineNum">   70</span>              :     void failedAssertSameData(const char *file, int line, </span>
+<span class="lineNum">   71</span>              :                               const char *xStr, const char *yStr, </span>
+<span class="lineNum">   72</span>              :                               const char *sizeStr, const void *x, </span>
+<span class="lineNum">   73</span>              :                               const void *y, unsigned size); </span>
+<span class="lineNum">   74</span>              :     void failedAssertDelta(const char *file, int line, </span>
+<span class="lineNum">   75</span>              :                            const char *xStr, const char *yStr, const char *dStr, </span>
+<span class="lineNum">   76</span>              :                            const char *x, const char *y, const char *d); </span>
+<span class="lineNum">   77</span>              :     void failedAssertDiffers(const char *file, int line, </span>
+<span class="lineNum">   78</span>              :                              const char *xStr, const char *yStr, </span>
+<span class="lineNum">   79</span>              :                              const char *value); </span>
+<span class="lineNum">   80</span>              :     void failedAssertLessThan(const char *file, int line, </span>
+<span class="lineNum">   81</span>              :                               const char *xStr, const char *yStr, </span>
+<span class="lineNum">   82</span>              :                               const char *x, const char *y); </span>
+<span class="lineNum">   83</span>              :     void failedAssertLessThanEquals(const char *file, int line, </span>
+<span class="lineNum">   84</span>              :                                     const char *xStr, const char *yStr, </span>
+<span class="lineNum">   85</span>              :                                     const char *x, const char *y); </span>
+<span class="lineNum">   86</span>              :     void failedAssertPredicate(const char *file, int line, </span>
+<span class="lineNum">   87</span>              :                                const char *predicate, const char *xStr, const char *x); </span>
+<span class="lineNum">   88</span>              :     void failedAssertRelation(const char *file, int line, </span>
+<span class="lineNum">   89</span>              :                               const char *relation, const char *xStr, const char *yStr, </span>
+<span class="lineNum">   90</span>              :                               const char *x, const char *y); </span>
+<span class="lineNum">   91</span>              :     void failedAssertThrows(const char *file, int line, </span>
+<span class="lineNum">   92</span>              :                             const char *expression, const char *type, </span>
+<span class="lineNum">   93</span>              :                             bool otherThrown); </span>
+<span class="lineNum">   94</span>              :     void failedAssertThrowsNot(const char *file, int line, const char *expression); </span>
+<span class="lineNum">   95</span>              :     void failedAssertSameFiles(const char* file, int line, const char* file1, const char* file2, const char* explanation); </span>
+<span class="lineNum">   96</span>              :  </span>
+<span class="lineNum">   97</span>              :     void initialize(); </span>
+<span class="lineNum">   98</span>              :  </span>
+<span class="lineNum">   99</span>              : private: </span>
+<span class="lineNum">  100</span>              :     TestTracker(const TestTracker &amp;); </span>
+<span class="lineNum">  101</span>              :     TestTracker &amp;operator=(const TestTracker &amp;); </span>
+<span class="lineNum">  102</span>              :  </span>
+<span class="lineNum">  103</span>              :     static bool _created; </span>
+<span class="lineNum">  104</span>              :     TestListener _dummyListener; </span>
+<span class="lineNum">  105</span>              :     DummyWorldDescription _dummyWorld; </span>
+<span class="lineNum">  106</span>              :     bool _testSkipped; </span>
+<span class="lineNum">  107</span>              :     unsigned _warnings, _skippedTests, _failedTests, _testFailedAsserts, _suiteFailedTests, _failedSuites; </span>
+<span class="lineNum">  108</span>              :     TestListener *_l; </span>
+<span class="lineNum">  109</span>              :     const WorldDescription *_world; </span>
+<span class="lineNum">  110</span>              :     const SuiteDescription *_suite; </span>
+<span class="lineNum">  111</span>              :     const TestDescription *_test; </span>
+<span class="lineNum">  112</span>              :  </span>
+<span class="lineNum">  113</span>              :     const TestDescription &amp;dummyTest() const; </span>
+<span class="lineNum">  114</span>              :     const SuiteDescription &amp;dummySuite() const; </span>
+<span class="lineNum">  115</span>              :     const WorldDescription &amp;dummyWorld() const; </span>
+<span class="lineNum">  116</span>              :  </span>
+<span class="lineNum">  117</span>              :     void setWorld(const WorldDescription *w); </span>
+<span class="lineNum">  118</span>              :     void setSuite(const SuiteDescription *s); </span>
+<span class="lineNum">  119</span>              :     void setTest(const TestDescription *t); </span>
+<span class="lineNum">  120</span>              :     void countWarning(); </span>
+<span class="lineNum">  121</span>              :     void countFailure(); </span>
+<span class="lineNum">  122</span>              :     void countSkipped(); </span>
+<span class="lineNum">  123</span>              :  </span>
+<span class="lineNum">  124</span>              :     friend class TestRunner; </span>
+<span class="lineNum">  125</span>              :  </span>
+<span class="lineNum">  126</span>              :     TestTracker(); </span>
+<span class="lineNum">  127</span>              :     void setListener(TestListener *l); </span>
+<span class="lineNum">  128</span>              : }; </span>
+<span class="lineNum">  129</span>              :  </span>
+<span class="lineNum">  130</span><span class="linePartCov">      2  /   3: inline TestTracker &amp;tracker() { return TestTracker::tracker(); } </span>
+<span class="lineNum">  131</span>              : } </span>
+<span class="lineNum">  132</span>              :  </span>
+<span class="lineNum">  133</span>              : #endif &#047;&#047; __cxxtest__TestTracker_h__ </span>
+<span class="lineNum">  134</span>              :  </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">170</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftMed" width="15%">27.6%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">47</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">    3</span>              :  CxxTest: A lightweight C++ unit testing library. </span>
+<span class="lineNum">    4</span>              :  Copyright (c) 2008 Sandia Corporation. </span>
+<span class="lineNum">    5</span>              :  This software is distributed under the LGPL License v3 </span>
+<span class="lineNum">    6</span>              :  For more information, see the COPYING file in the top CxxTest directory. </span>
+<span class="lineNum">    7</span>              :  Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, </span>
+<span class="lineNum">    8</span>              :  the U.S. Government retains certain rights in this software. </span>
+<span class="lineNum">    9</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">   10</span>              : *&#047; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : #ifndef __cxxtest__ErrorFormatter_h__ </span>
+<span class="lineNum">   13</span>              : #define __cxxtest__ErrorFormatter_h__ </span>
+<span class="lineNum">   14</span>              :  </span>
+<span class="lineNum">   15</span>              : &#047;&#047; </span>
+<span class="lineNum">   16</span>              : &#047;&#047; The ErrorFormatter is a TestListener that </span>
+<span class="lineNum">   17</span>              : &#047;&#047; prints reports of the errors to an output </span>
+<span class="lineNum">   18</span>              : &#047;&#047; stream.  Since we cannot rely on the standard </span>
+<span class="lineNum">   19</span>              : &#047;&#047; iostreams, this header defines a base class </span>
+<span class="lineNum">   20</span>              : &#047;&#047; analogout to std::ostream. </span>
+<span class="lineNum">   21</span>              : &#047;&#047; </span>
+<span class="lineNum">   22</span>              :  </span>
+<span class="lineNum">   23</span>              : #include &lt;cxxtest&#047;TestRunner.h&gt; </span>
+<span class="lineNum">   24</span>              : #include &lt;cxxtest&#047;TestListener.h&gt; </span>
+<span class="lineNum">   25</span>              : #include &lt;cxxtest&#047;TestTracker.h&gt; </span>
+<span class="lineNum">   26</span>              : #include &lt;cxxtest&#047;ValueTraits.h&gt; </span>
+<span class="lineNum">   27</span>              : #include &lt;cstdio&gt; </span>
+<span class="lineNum">   28</span>              :  </span>
+<span class="lineNum">   29</span>              : namespace CxxTest </span>
+<span class="lineNum">   30</span>              : { </span>
+<span class="lineNum">   31</span><span class="linePartCov">      2  /   3: class OutputStream </span>
+<span class="lineNum">   32</span>              : { </span>
+<span class="lineNum">   33</span>              : public: </span>
+<span class="lineNum">   34</span><span class="linePartCov">      2  /   5:     virtual ~OutputStream() {} </span>
+<span class="lineNum">   35</span><span class="lineNoCov">      0  /   3:     virtual void flush() {}; </span>
+<span class="lineNum">   36</span><span class="lineNoCov">      0  /   3:     virtual OutputStream &amp;operator&lt;&lt;(unsigned &#047;*number*&#047;) { return *this; } </span>
+<span class="lineNum">   37</span><span class="lineNoCov">      0  /   3:     virtual OutputStream &amp;operator&lt;&lt;(const char * &#047;*string*&#047;) { return *this; } </span>
+<span class="lineNum">   38</span>              :  </span>
+<span class="lineNum">   39</span>              :     typedef void (*Manipulator)(OutputStream &amp;); </span>
+<span class="lineNum">   40</span>              :  </span>
+<span class="lineNum">   41</span><span class="linePartCov">      2  /   3:     virtual OutputStream &amp;operator&lt;&lt;(Manipulator m) { m(*this); return *this; } </span>
+<span class="lineNum">   42</span><span class="linePartCov">      2  /   3:     static void endl(OutputStream &amp;o) { (o &lt;&lt; &quot;&#092;n&quot;).flush(); } </span>
+<span class="lineNum">   43</span>              : }; </span>
+<span class="lineNum">   44</span>              :  </span>
+<span class="lineNum">   45</span><span class="linePartCov">      2  /   5: class ErrorFormatter : public TestListener </span>
+<span class="lineNum">   46</span>              : { </span>
+<span class="lineNum">   47</span>              : public: </span>
+<span class="lineNum">   48</span><span class="lineCov">      1  /   1:     ErrorFormatter(OutputStream *o, const char *preLine = &quot;:&quot;, const char *postLine = &quot;&quot;, </span>
+<span class="lineNum">   49</span>              :                    const char *errorString = &quot;Error&quot;, </span>
+<span class="lineNum">   50</span>              :                    const char *warningString = &quot;Warning&quot;) : </span>
+<span class="lineNum">   51</span>              :         _dotting(true), </span>
+<span class="lineNum">   52</span>              :         _reported(false), </span>
+<span class="lineNum">   53</span>              :         _o(o), </span>
+<span class="lineNum">   54</span>              :         _preLine(preLine), </span>
+<span class="lineNum">   55</span>              :         _postLine(postLine), </span>
+<span class="lineNum">   56</span>              :         _errorString(errorString), </span>
+<span class="lineNum">   57</span><span class="lineCov">      1  /   1:         _warningString(warningString) </span>
+<span class="lineNum">   58</span>              :     { </span>
+<span class="lineNum">   59</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   60</span>              :  </span>
+<span class="lineNum">   61</span><span class="lineCov">      1  /   1:     int run() </span>
+<span class="lineNum">   62</span>              :     { </span>
+<span class="lineNum">   63</span><span class="lineCov">      1  /   1:         TestRunner::runAllTests(*this); </span>
+<span class="lineNum">   64</span><span class="lineCov">      1  /   1:         return tracker().failedTests(); </span>
+<span class="lineNum">   65</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   66</span>              :  </span>
+<span class="lineNum">   67</span><span class="lineCov">      1  /   1:     void enterWorld(const WorldDescription&amp; desc) </span>
+<span class="lineNum">   68</span>              :     { </span>
+<span class="lineNum">   69</span><span class="lineCov">      1  /   1:         (*_o) &lt;&lt; &quot;Running &quot; &lt;&lt; desc.worldName() &lt;&lt; &quot; tests (&quot; &lt;&lt; totalTests &lt;&lt; &quot;)&quot;; </span>
+<span class="lineNum">   70</span><span class="lineCov">      1  /   1:         _o-&gt;flush(); </span>
+<span class="lineNum">   71</span><span class="lineCov">      1  /   1:         _dotting = true; </span>
+<span class="lineNum">   72</span><span class="lineCov">      1  /   1:         _reported = false; </span>
+<span class="lineNum">   73</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   74</span>              :  </span>
+<span class="lineNum">   75</span><span class="lineCov">      2  /   2:     static void totalTests(OutputStream &amp;o) </span>
+<span class="lineNum">   76</span>              :     { </span>
+<span class="lineNum">   77</span>              :         char s[WorldDescription::MAX_STRLEN_TOTAL_TESTS]; </span>
+<span class="lineNum">   78</span><span class="lineCov">      1  /   1:         const WorldDescription &amp;wd = tracker().world(); </span>
+<span class="lineNum">   79</span><span class="lineCov">      1  /   1:         o &lt;&lt; wd.strTotalTests(s) &lt;&lt; (wd.numTotalTests() == 1 ? &quot; test&quot; : &quot; tests&quot;); </span>
+<span class="lineNum">   80</span><span class="lineCov">      1  /   1:     } </span>
+<span class="lineNum">   81</span>              :  </span>
+<span class="lineNum">   82</span><span class="lineCov">      1  /   1:     void enterSuite(const SuiteDescription &amp;) </span>
+<span class="lineNum">   83</span>              :     { </span>
+<span class="lineNum">   84</span><span class="lineCov">      1  /   1:         _reported = false; </span>
+<span class="lineNum">   85</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   86</span>              :  </span>
+<span class="lineNum">   87</span><span class="lineCov">      1  /   1:     void enterTest(const TestDescription &amp;) </span>
+<span class="lineNum">   88</span>              :     { </span>
+<span class="lineNum">   89</span><span class="lineCov">      1  /   1:         _reported = false; </span>
+<span class="lineNum">   90</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">   91</span>              :  </span>
+<span class="lineNum">   92</span><span class="lineCov">      1  /   1:     void leaveTest(const TestDescription &amp;) </span>
+<span class="lineNum">   93</span>              :     { </span>
+<span class="lineNum">   94</span><span class="lineCov">      1  /   1:         if (tracker().testSkipped()) </span>
+<span class="lineNum">   95</span>              :         { </span>
+<span class="lineNum">   96</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; &quot;s&quot;; </span>
+<span class="lineNum">   97</span><span class="lineNoCov">      0  /   1:             _o-&gt;flush(); </span>
+<span class="lineNum">   98</span><span class="lineNoCov">      0  /   1:             fflush(stdout); </span>
+<span class="lineNum">   99</span><span class="lineNoCov">      0  /   1:             _dotting = true; </span>
+<span class="lineNum">  100</span>              :         } </span>
+<span class="lineNum">  101</span><span class="lineCov">      1  /   1:         else if (!tracker().testFailed()) </span>
+<span class="lineNum">  102</span>              :         { </span>
+<span class="lineNum">  103</span><span class="lineCov">      1  /   1:             (*_o) &lt;&lt; &quot;.&quot;; </span>
+<span class="lineNum">  104</span><span class="lineCov">      1  /   1:             _o-&gt;flush(); </span>
+<span class="lineNum">  105</span><span class="lineCov">      1  /   1:             fflush(stdout); </span>
+<span class="lineNum">  106</span><span class="lineCov">      1  /   1:             _dotting = true; </span>
+<span class="lineNum">  107</span>              :         } </span>
+<span class="lineNum">  108</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  109</span>              :  </span>
+<span class="lineNum">  110</span><span class="lineCov">      1  /   1:     void leaveWorld(const WorldDescription &amp;desc) </span>
+<span class="lineNum">  111</span>              :     { </span>
+<span class="lineNum">  112</span><span class="lineCov">      1  /   1:         if (!tracker().failedTests()) </span>
+<span class="lineNum">  113</span>              :         { </span>
+<span class="lineNum">  114</span><span class="lineCov">      1  /   1:             (*_o) &lt;&lt; &quot;OK!&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  115</span><span class="lineCov">      1  /   1:             return; </span>
+<span class="lineNum">  116</span>              :         } </span>
+<span class="lineNum">  117</span><span class="lineNoCov">      0  /   1:         newLine(); </span>
+<span class="lineNum">  118</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;Failed &quot; &lt;&lt; tracker().failedTests() &lt;&lt; &quot; and Skipped &quot; &lt;&lt; tracker().skippedTests() &lt;&lt; &quot; of &quot; &lt;&lt; totalTests &lt;&lt; endl; </span>
+<span class="lineNum">  119</span><span class="lineNoCov">      0  /   1:         unsigned numPassed = desc.numTotalTests() - tracker().failedTests() - tracker().skippedTests(); </span>
+<span class="lineNum">  120</span><span class="lineNoCov">      0  /   1:         unsigned numTotal = desc.numTotalTests() - tracker().skippedTests(); </span>
+<span class="lineNum">  121</span><span class="lineNoCov">      0  /   1:         if (numTotal == 0) </span>
+<span class="lineNum">  122</span>              :         { </span>
+<span class="lineNum">  123</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; &quot;Success rate: 100%&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  124</span>              :         } </span>
+<span class="lineNum">  125</span>              :         else </span>
+<span class="lineNum">  126</span>              :         { </span>
+<span class="lineNum">  127</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; &quot;Success rate: &quot; &lt;&lt; (unsigned)(numPassed * 100.0 &#047; numTotal) &lt;&lt; &quot;%&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  128</span>              :         } </span>
+<span class="lineNum">  129</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  130</span>              :  </span>
+<span class="lineNum">  131</span><span class="lineNoCov">      0  /   1:     void trace(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  132</span>              :     { </span>
+<span class="lineNum">  133</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; &quot;Trace: &quot; &lt;&lt; </span>
+<span class="lineNum">  134</span><span class="lineNoCov">      0  /   1:                          expression &lt;&lt; endl; </span>
+<span class="lineNum">  135</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  136</span>              :  </span>
+<span class="lineNum">  137</span><span class="lineNoCov">      0  /   1:     void warning(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  138</span>              :     { </span>
+<span class="lineNum">  139</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _warningString &lt;&lt; &quot;: &quot; &lt;&lt; </span>
+<span class="lineNum">  140</span><span class="lineNoCov">      0  /   1:                          expression &lt;&lt; endl; </span>
+<span class="lineNum">  141</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  142</span>              :  </span>
+<span class="lineNum">  143</span><span class="lineNoCov">      0  /   1:     void skippedTest(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  144</span>              :     { </span>
+<span class="lineNum">  145</span><span class="lineNoCov">      0  /   1:         if(expression &amp;&amp; strlen(expression) &gt; 0) </span>
+<span class="lineNum">  146</span><span class="lineNoCov">      0  /   1:             stop(file, line) &lt;&lt; _warningString &lt;&lt; &quot;: Test skipped: &quot; &lt;&lt; </span>
+<span class="lineNum">  147</span><span class="lineNoCov">      0  /   1:                              expression &lt;&lt; endl; </span>
+<span class="lineNum">  148</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  149</span>              :  </span>
+<span class="lineNum">  150</span><span class="lineNoCov">      0  /   1:     void failedTest(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  151</span>              :     { </span>
+<span class="lineNum">  152</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Test failed: &quot; &lt;&lt; </span>
+<span class="lineNum">  153</span><span class="lineNoCov">      0  /   1:                          expression &lt;&lt; endl; </span>
+<span class="lineNum">  154</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  155</span>              :  </span>
+<span class="lineNum">  156</span><span class="lineNoCov">      0  /   1:     void failedAssert(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  157</span>              :     { </span>
+<span class="lineNum">  158</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Assertion failed: &quot; &lt;&lt; </span>
+<span class="lineNum">  159</span><span class="lineNoCov">      0  /   1:                          expression &lt;&lt; endl; </span>
+<span class="lineNum">  160</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  161</span>              :  </span>
+<span class="lineNum">  162</span><span class="lineNoCov">      0  /   1:     void failedAssertEquals(const char *file, int line, </span>
+<span class="lineNum">  163</span>              :                             const char *xStr, const char *yStr, </span>
+<span class="lineNum">  164</span>              :                             const char *x, const char *y) </span>
+<span class="lineNum">  165</span>              :     { </span>
+<span class="lineNum">  166</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; </span>
+<span class="lineNum">  167</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; == &quot; &lt;&lt; yStr &lt;&lt; &quot;), found (&quot; &lt;&lt; </span>
+<span class="lineNum">  168</span><span class="lineNoCov">      0  /   1:                          x &lt;&lt; &quot; != &quot; &lt;&lt; y &lt;&lt; &quot;)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  169</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  170</span>              :  </span>
+<span class="lineNum">  171</span><span class="lineNoCov">      0  /   1:     void failedAssertSameData(const char *file, int line, </span>
+<span class="lineNum">  172</span>              :                               const char *xStr, const char *yStr, </span>
+<span class="lineNum">  173</span>              :                               const char *sizeStr, const void *x, </span>
+<span class="lineNum">  174</span>              :                               const void *y, unsigned size) </span>
+<span class="lineNum">  175</span>              :     { </span>
+<span class="lineNum">  176</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected &quot; &lt;&lt; sizeStr &lt;&lt; &quot; (&quot; &lt;&lt; size &lt;&lt; &quot;) bytes to be equal at (&quot; &lt;&lt; </span>
+<span class="lineNum">  177</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot;) and (&quot; &lt;&lt; yStr &lt;&lt; &quot;), found:&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  178</span><span class="lineNoCov">      0  /   1:         dump(x, size); </span>
+<span class="lineNum">  179</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;     differs from&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  180</span><span class="lineNoCov">      0  /   1:         dump(y, size); </span>
+<span class="lineNum">  181</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  182</span>              :  </span>
+<span class="lineNum">  183</span><span class="lineNoCov">      0  /   1:     void failedAssertSameFiles(const char* file, int line, </span>
+<span class="lineNum">  184</span>              :                                const char*, const char*, </span>
+<span class="lineNum">  185</span>              :                                const char* explanation </span>
+<span class="lineNum">  186</span>              :                               ) </span>
+<span class="lineNum">  187</span>              :     { </span>
+<span class="lineNum">  188</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: &quot; &lt;&lt; explanation &lt;&lt; endl; </span>
+<span class="lineNum">  189</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  190</span>              :  </span>
+<span class="lineNum">  191</span><span class="lineNoCov">      0  /   1:     void failedAssertDelta(const char *file, int line, </span>
+<span class="lineNum">  192</span>              :                            const char *xStr, const char *yStr, const char *dStr, </span>
+<span class="lineNum">  193</span>              :                            const char *x, const char *y, const char *d) </span>
+<span class="lineNum">  194</span>              :     { </span>
+<span class="lineNum">  195</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; </span>
+<span class="lineNum">  196</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; == &quot; &lt;&lt; yStr &lt;&lt; &quot;) up to &quot; &lt;&lt; dStr &lt;&lt; &quot; (&quot; &lt;&lt; d &lt;&lt; &quot;), found (&quot; &lt;&lt; </span>
+<span class="lineNum">  197</span><span class="lineNoCov">      0  /   1:                          x &lt;&lt; &quot; != &quot; &lt;&lt; y &lt;&lt; &quot;)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  198</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  199</span>              :  </span>
+<span class="lineNum">  200</span><span class="lineNoCov">      0  /   1:     void failedAssertDiffers(const char *file, int line, </span>
+<span class="lineNum">  201</span>              :                              const char *xStr, const char *yStr, </span>
+<span class="lineNum">  202</span>              :                              const char *value) </span>
+<span class="lineNum">  203</span>              :     { </span>
+<span class="lineNum">  204</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; </span>
+<span class="lineNum">  205</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; != &quot; &lt;&lt; yStr &lt;&lt; &quot;), found (&quot; &lt;&lt; </span>
+<span class="lineNum">  206</span><span class="lineNoCov">      0  /   1:                          value &lt;&lt; &quot;)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  207</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  208</span>              :  </span>
+<span class="lineNum">  209</span><span class="lineNoCov">      0  /   1:     void failedAssertLessThan(const char *file, int line, </span>
+<span class="lineNum">  210</span>              :                               const char *xStr, const char *yStr, </span>
+<span class="lineNum">  211</span>              :                               const char *x, const char *y) </span>
+<span class="lineNum">  212</span>              :     { </span>
+<span class="lineNum">  213</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; </span>
+<span class="lineNum">  214</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; &lt; &quot; &lt;&lt; yStr &lt;&lt; &quot;), found (&quot; &lt;&lt; </span>
+<span class="lineNum">  215</span><span class="lineNoCov">      0  /   1:                          x &lt;&lt; &quot; &gt;= &quot; &lt;&lt; y &lt;&lt; &quot;)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  216</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  217</span>              :  </span>
+<span class="lineNum">  218</span><span class="lineNoCov">      0  /   1:     void failedAssertLessThanEquals(const char *file, int line, </span>
+<span class="lineNum">  219</span>              :                                     const char *xStr, const char *yStr, </span>
+<span class="lineNum">  220</span>              :                                     const char *x, const char *y) </span>
+<span class="lineNum">  221</span>              :     { </span>
+<span class="lineNum">  222</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; </span>
+<span class="lineNum">  223</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; &lt;= &quot; &lt;&lt; yStr &lt;&lt; &quot;), found (&quot; &lt;&lt; </span>
+<span class="lineNum">  224</span><span class="lineNoCov">      0  /   1:                          x &lt;&lt; &quot; &gt; &quot; &lt;&lt; y &lt;&lt; &quot;)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  225</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  226</span>              :  </span>
+<span class="lineNum">  227</span><span class="lineNoCov">      0  /   1:     void failedAssertRelation(const char *file, int line, </span>
+<span class="lineNum">  228</span>              :                               const char *relation, const char *xStr, const char *yStr, </span>
+<span class="lineNum">  229</span>              :                               const char *x, const char *y) </span>
+<span class="lineNum">  230</span>              :     { </span>
+<span class="lineNum">  231</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected &quot; &lt;&lt; relation &lt;&lt; &quot;( &quot; &lt;&lt; </span>
+<span class="lineNum">  232</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot;, &quot; &lt;&lt; yStr &lt;&lt; &quot; ), found !&quot; &lt;&lt; relation &lt;&lt; &quot;( &quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot; )&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  233</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  234</span>              :  </span>
+<span class="lineNum">  235</span><span class="lineNoCov">      0  /   1:     void failedAssertPredicate(const char *file, int line, </span>
+<span class="lineNum">  236</span>              :                                const char *predicate, const char *xStr, const char *x) </span>
+<span class="lineNum">  237</span>              :     { </span>
+<span class="lineNum">  238</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected &quot; &lt;&lt; predicate &lt;&lt; &quot;( &quot; &lt;&lt; </span>
+<span class="lineNum">  239</span><span class="lineNoCov">      0  /   1:                          xStr &lt;&lt; &quot; ), found !&quot; &lt;&lt; predicate &lt;&lt; &quot;( &quot; &lt;&lt; x &lt;&lt; &quot; )&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  240</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  241</span>              :  </span>
+<span class="lineNum">  242</span><span class="lineNoCov">      0  /   1:     void failedAssertThrows(const char *file, int line, </span>
+<span class="lineNum">  243</span>              :                             const char *expression, const char *type, </span>
+<span class="lineNum">  244</span>              :                             bool otherThrown) </span>
+<span class="lineNum">  245</span>              :     { </span>
+<span class="lineNum">  246</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; expression &lt;&lt; &quot;) to throw (&quot; &lt;&lt; </span>
+<span class="lineNum">  247</span><span class="lineNoCov">      0  /   1:                          type &lt;&lt; &quot;) but it &quot; &lt;&lt; (otherThrown ? &quot;threw something else&quot; : &quot;didn&#039;t throw&quot;) &lt;&lt; </span>
+<span class="lineNum">  248</span><span class="lineNoCov">      0  /   1:                          endl; </span>
+<span class="lineNum">  249</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  250</span>              :  </span>
+<span class="lineNum">  251</span><span class="lineNoCov">      0  /   1:     void failedAssertThrowsNot(const char *file, int line, const char *expression) </span>
+<span class="lineNum">  252</span>              :     { </span>
+<span class="lineNum">  253</span><span class="lineNoCov">      0  /   1:         stop(file, line) &lt;&lt; _errorString &lt;&lt; &quot;: Expected (&quot; &lt;&lt; expression &lt;&lt; &quot;) not to throw, but it did&quot; &lt;&lt; </span>
+<span class="lineNum">  254</span><span class="lineNoCov">      0  /   1:                          endl; </span>
+<span class="lineNum">  255</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  256</span>              :  </span>
+<span class="lineNum">  257</span>              : protected: </span>
+<span class="lineNum">  258</span><span class="lineCov">      1  /   1:     OutputStream *outputStream() const </span>
+<span class="lineNum">  259</span>              :     { </span>
+<span class="lineNum">  260</span><span class="lineCov">      1  /   1:         return _o; </span>
+<span class="lineNum">  261</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  262</span>              :  </span>
+<span class="lineNum">  263</span>              : private: </span>
+<span class="lineNum">  264</span>              :     ErrorFormatter(const ErrorFormatter &amp;); </span>
+<span class="lineNum">  265</span>              :     ErrorFormatter &amp;operator=(const ErrorFormatter &amp;); </span>
+<span class="lineNum">  266</span>              :  </span>
+<span class="lineNum">  267</span><span class="lineNoCov">      0  /   1:     OutputStream &amp;stop(const char *file, int line) </span>
+<span class="lineNum">  268</span>              :     { </span>
+<span class="lineNum">  269</span><span class="lineNoCov">      0  /   1:         newLine(); </span>
+<span class="lineNum">  270</span><span class="lineNoCov">      0  /   1:         reportTest(); </span>
+<span class="lineNum">  271</span><span class="lineNoCov">      0  /   1:         return (*_o) &lt;&lt; file &lt;&lt; _preLine &lt;&lt; line &lt;&lt; _postLine &lt;&lt; &quot;: &quot;; </span>
+<span class="lineNum">  272</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  273</span>              :  </span>
+<span class="lineNum">  274</span><span class="lineNoCov">      0  /   1:     void newLine(void) </span>
+<span class="lineNum">  275</span>              :     { </span>
+<span class="lineNum">  276</span><span class="lineNoCov">      0  /   1:         if (_dotting) </span>
+<span class="lineNum">  277</span>              :         { </span>
+<span class="lineNum">  278</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; endl; </span>
+<span class="lineNum">  279</span><span class="lineNoCov">      0  /   1:             _dotting = false; </span>
+<span class="lineNum">  280</span>              :         } </span>
+<span class="lineNum">  281</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  282</span>              :  </span>
+<span class="lineNum">  283</span><span class="lineNoCov">      0  /   1:     void reportTest(void) </span>
+<span class="lineNum">  284</span>              :     { </span>
+<span class="lineNum">  285</span><span class="lineNoCov">      0  /   1:         if (_reported) </span>
+<span class="lineNum">  286</span>              :         { </span>
+<span class="lineNum">  287</span><span class="lineNoCov">      0  /   1:             return; </span>
+<span class="lineNum">  288</span>              :         } </span>
+<span class="lineNum">  289</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;In &quot; &lt;&lt; tracker().suite().suiteName() &lt;&lt; &quot;::&quot; &lt;&lt; tracker().test().testName() &lt;&lt; &quot;:&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  290</span><span class="lineNoCov">      0  /   1:         _reported = true; </span>
+<span class="lineNum">  291</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  292</span>              :  </span>
+<span class="lineNum">  293</span><span class="lineNoCov">      0  /   1:     void dump(const void *buffer, unsigned size) </span>
+<span class="lineNum">  294</span>              :     { </span>
+<span class="lineNum">  295</span><span class="lineNoCov">      0  /   1:         if (!buffer) </span>
+<span class="lineNum">  296</span>              :         { </span>
+<span class="lineNum">  297</span><span class="lineNoCov">      0  /   1:             dumpNull(); </span>
+<span class="lineNum">  298</span>              :         } </span>
+<span class="lineNum">  299</span>              :         else </span>
+<span class="lineNum">  300</span>              :         { </span>
+<span class="lineNum">  301</span><span class="lineNoCov">      0  /   1:             dumpBuffer(buffer, size); </span>
+<span class="lineNum">  302</span>              :         } </span>
+<span class="lineNum">  303</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  304</span>              :  </span>
+<span class="lineNum">  305</span><span class="lineNoCov">      0  /   1:     void dumpNull() </span>
+<span class="lineNum">  306</span>              :     { </span>
+<span class="lineNum">  307</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;   (null)&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  308</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  309</span>              :  </span>
+<span class="lineNum">  310</span><span class="lineNoCov">      0  /   1:     void dumpBuffer(const void *buffer, unsigned size) </span>
+<span class="lineNum">  311</span>              :     { </span>
+<span class="lineNum">  312</span><span class="lineNoCov">      0  /   1:         unsigned dumpSize = size; </span>
+<span class="lineNum">  313</span><span class="lineNoCov">      0  /   1:         if (maxDumpSize() &amp;&amp; dumpSize &gt; maxDumpSize()) </span>
+<span class="lineNum">  314</span>              :         { </span>
+<span class="lineNum">  315</span><span class="lineNoCov">      0  /   1:             dumpSize = maxDumpSize(); </span>
+<span class="lineNum">  316</span>              :         } </span>
+<span class="lineNum">  317</span>              :  </span>
+<span class="lineNum">  318</span><span class="lineNoCov">      0  /   1:         const unsigned char *p = (const unsigned char *)buffer; </span>
+<span class="lineNum">  319</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;   { &quot;; </span>
+<span class="lineNum">  320</span><span class="lineNoCov">      0  /   2:         for (unsigned i = 0; i &lt; dumpSize; ++ i) </span>
+<span class="lineNum">  321</span>              :         { </span>
+<span class="lineNum">  322</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; byteToHex(*p++) &lt;&lt; &quot; &quot;; </span>
+<span class="lineNum">  323</span>              :         } </span>
+<span class="lineNum">  324</span><span class="lineNoCov">      0  /   1:         if (dumpSize &lt; size) </span>
+<span class="lineNum">  325</span>              :         { </span>
+<span class="lineNum">  326</span><span class="lineNoCov">      0  /   1:             (*_o) &lt;&lt; &quot;... &quot;; </span>
+<span class="lineNum">  327</span>              :         } </span>
+<span class="lineNum">  328</span><span class="lineNoCov">      0  /   1:         (*_o) &lt;&lt; &quot;}&quot; &lt;&lt; endl; </span>
+<span class="lineNum">  329</span><span class="lineNoCov">      0  /   2:     } </span>
+<span class="lineNum">  330</span>              :  </span>
+<span class="lineNum">  331</span><span class="lineCov">      1  /   1:     static void endl(OutputStream &amp;o) </span>
+<span class="lineNum">  332</span>              :     { </span>
+<span class="lineNum">  333</span><span class="lineCov">      1  /   1:         OutputStream::endl(o); </span>
+<span class="lineNum">  334</span><span class="linePartCov">      1  /   2:     } </span>
+<span class="lineNum">  335</span>              :  </span>
+<span class="lineNum">  336</span>              :     bool _dotting; </span>
+<span class="lineNum">  337</span>              :     bool _reported; </span>
+<span class="lineNum">  338</span>              :     OutputStream *_o; </span>
+<span class="lineNum">  339</span>              :     const char *_preLine; </span>
+<span class="lineNum">  340</span>              :     const char *_postLine; </span>
+<span class="lineNum">  341</span>              :     const char *_errorString; </span>
+<span class="lineNum">  342</span>              :     const char *_warningString; </span>
+<span class="lineNum">  343</span>              : }; </span>
+<span class="lineNum">  344</span>              : } </span>
+<span class="lineNum">  345</span>              :  </span>
+<span class="lineNum">  346</span>              : #endif &#047;&#047; __cxxtest__ErrorFormatter_h__ </span>
+<span class="lineNum">  347</span>              :  </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>

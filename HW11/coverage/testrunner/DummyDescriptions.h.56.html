@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Coverage - testrunner</title>
+  <link rel="stylesheet" type="text/css" href="bcov.css"/>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="title">Coverage Report</td></tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr>
+    <td width="100%">
+      <table cellpadding="1" border="0" width="100%">
+        <tr>
+          <td class="headerItem" width="20%">Command:</td>
+          <td class="headerValue" width="80%" colspan=6>testrunner</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Date:</td>
+          <td class="headerValue" width="15%">2015-11-12 15:14:24</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Instrumented&nbsp;lines:</td>
+          <td class="headerValue" width="10%">3</td>
+        </tr>
+        <tr>
+          <td class="headerItem" width="20%">Code&nbsp;covered:</td>
+          <td class="coverPerLeftHi" width="15%">100.0%</td>
+          <td width="5%"></td>
+          <td class="headerItem" width="20%">Executed&nbsp;lines:</td>
+          <td class="headerValue" width="10%">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+</table>
+<pre class="source">
+<span class="lineNum">    1</span>              : &#047;* </span>
+<span class="lineNum">    2</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">    3</span>              :  CxxTest: A lightweight C++ unit testing library. </span>
+<span class="lineNum">    4</span>              :  Copyright (c) 2008 Sandia Corporation. </span>
+<span class="lineNum">    5</span>              :  This software is distributed under the LGPL License v3 </span>
+<span class="lineNum">    6</span>              :  For more information, see the COPYING file in the top CxxTest directory. </span>
+<span class="lineNum">    7</span>              :  Under the terms of Contract DE-AC04-94AL85000 with Sandia Corporation, </span>
+<span class="lineNum">    8</span>              :  the U.S. Government retains certain rights in this software. </span>
+<span class="lineNum">    9</span>              : ------------------------------------------------------------------------- </span>
+<span class="lineNum">   10</span>              : *&#047; </span>
+<span class="lineNum">   11</span>              :  </span>
+<span class="lineNum">   12</span>              : #ifndef __cxxtest__DummyDescriptions_h__ </span>
+<span class="lineNum">   13</span>              : #define __cxxtest__DummyDescriptions_h__ </span>
+<span class="lineNum">   14</span>              :  </span>
+<span class="lineNum">   15</span>              : &#047;&#047; </span>
+<span class="lineNum">   16</span>              : &#047;&#047; DummyTestDescription, DummySuiteDescription and DummyWorldDescription </span>
+<span class="lineNum">   17</span>              : &#047;&#047; </span>
+<span class="lineNum">   18</span>              :  </span>
+<span class="lineNum">   19</span>              : #include &lt;cxxtest&#047;Descriptions.h&gt; </span>
+<span class="lineNum">   20</span>              :  </span>
+<span class="lineNum">   21</span>              : namespace CxxTest </span>
+<span class="lineNum">   22</span>              : { </span>
+<span class="lineNum">   23</span><span class="linePartCov">      2  /   5: class DummyTestDescription : public TestDescription </span>
+<span class="lineNum">   24</span>              : { </span>
+<span class="lineNum">   25</span>              : public: </span>
+<span class="lineNum">   26</span>              :     DummyTestDescription(); </span>
+<span class="lineNum">   27</span>              :  </span>
+<span class="lineNum">   28</span>              :     const char *file() const; </span>
+<span class="lineNum">   29</span>              :     int line() const; </span>
+<span class="lineNum">   30</span>              :     const char *testName() const; </span>
+<span class="lineNum">   31</span>              :     const char *suiteName() const; </span>
+<span class="lineNum">   32</span>              :     bool setUp(); </span>
+<span class="lineNum">   33</span>              :     void run(); </span>
+<span class="lineNum">   34</span>              :     bool tearDown(); </span>
+<span class="lineNum">   35</span>              :  </span>
+<span class="lineNum">   36</span>              :     TestDescription *next(); </span>
+<span class="lineNum">   37</span>              :     const TestDescription *next() const; </span>
+<span class="lineNum">   38</span>              : }; </span>
+<span class="lineNum">   39</span>              :  </span>
+<span class="lineNum">   40</span><span class="linePartCov">      2  /   5: class DummySuiteDescription : public SuiteDescription </span>
+<span class="lineNum">   41</span>              : { </span>
+<span class="lineNum">   42</span>              : public: </span>
+<span class="lineNum">   43</span>              :     DummySuiteDescription(); </span>
+<span class="lineNum">   44</span>              :  </span>
+<span class="lineNum">   45</span>              :     const char *file() const; </span>
+<span class="lineNum">   46</span>              :     int line() const; </span>
+<span class="lineNum">   47</span>              :     const char *suiteName() const; </span>
+<span class="lineNum">   48</span>              :     TestSuite *suite() const; </span>
+<span class="lineNum">   49</span>              :     unsigned numTests() const; </span>
+<span class="lineNum">   50</span>              :     const TestDescription &amp;testDescription(unsigned) const; </span>
+<span class="lineNum">   51</span>              :     SuiteDescription *next(); </span>
+<span class="lineNum">   52</span>              :     TestDescription *firstTest(); </span>
+<span class="lineNum">   53</span>              :     const SuiteDescription *next() const; </span>
+<span class="lineNum">   54</span>              :     const TestDescription *firstTest() const; </span>
+<span class="lineNum">   55</span>              :     void activateAllTests(); </span>
+<span class="lineNum">   56</span>              :     bool leaveOnly(const char * &#047;*testName*&#047;); </span>
+<span class="lineNum">   57</span>              :  </span>
+<span class="lineNum">   58</span>              :     bool setUp(); </span>
+<span class="lineNum">   59</span>              :     bool tearDown(); </span>
+<span class="lineNum">   60</span>              :  </span>
+<span class="lineNum">   61</span>              : private: </span>
+<span class="lineNum">   62</span>              :     DummyTestDescription _test; </span>
+<span class="lineNum">   63</span>              : }; </span>
+<span class="lineNum">   64</span>              :  </span>
+<span class="lineNum">   65</span><span class="linePartCov">      2  /   5: class DummyWorldDescription : public WorldDescription </span>
+<span class="lineNum">   66</span>              : { </span>
+<span class="lineNum">   67</span>              : public: </span>
+<span class="lineNum">   68</span>              :     DummyWorldDescription(); </span>
+<span class="lineNum">   69</span>              :  </span>
+<span class="lineNum">   70</span>              :     unsigned numSuites(void) const; </span>
+<span class="lineNum">   71</span>              :     unsigned numTotalTests(void) const; </span>
+<span class="lineNum">   72</span>              :     const SuiteDescription &amp;suiteDescription(unsigned) const; </span>
+<span class="lineNum">   73</span>              :     SuiteDescription *firstSuite(); </span>
+<span class="lineNum">   74</span>              :     const SuiteDescription *firstSuite() const; </span>
+<span class="lineNum">   75</span>              :     void activateAllTests(); </span>
+<span class="lineNum">   76</span>              :     bool leaveOnly(const char * &#047;*suiteName*&#047;, const char * &#047;*testName*&#047; = 0); </span>
+<span class="lineNum">   77</span>              :  </span>
+<span class="lineNum">   78</span>              :     bool setUp(); </span>
+<span class="lineNum">   79</span>              :     bool tearDown(); </span>
+<span class="lineNum">   80</span>              :  </span>
+<span class="lineNum">   81</span>              : private: </span>
+<span class="lineNum">   82</span>              :     DummySuiteDescription _suite; </span>
+<span class="lineNum">   83</span>              : }; </span>
+<span class="lineNum">   84</span>              : } </span>
+<span class="lineNum">   85</span>              :  </span>
+<span class="lineNum">   86</span>              : #endif &#047;&#047; __cxxtest__DummyDescriptions_h__ </span>
+<span class="lineNum">   87</span>              :  </span>
+</pre>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""/></td></tr>
+  <tr><td class="versionInfo">Generated by: <a href="http://simonkagstrom.github.com/kcov/index.html">Kcov</a> (based on <a href="http://bcov.sourceforge.net">bcov</a>)</td></tr>
+</table>
+<br/>
+</body>
+</html>
